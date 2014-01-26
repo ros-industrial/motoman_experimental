@@ -270,3 +270,88 @@ def launch_test(package, model):
   rtn = LAUNCH_TEST_MACRO.replace("${package}", package)
   rtn = rtn.replace("${model}", model)
   return rtn
+
+# motoman_<model>_moveit_controller_manager.launch.xml macro
+# moveit_package - name of moveit_package
+# model - robot model
+CONTROLLER_MANAGER_LAUNCH_MACRO="""
+<launch>
+  <arg name="moveit_controller_manager"
+       default="moveit_simple_controller_manager/MoveItSimpleControllerManager"/>
+  <param name="moveit_controller_manager"
+         value="$(arg moveit_controller_manager)"/>
+
+  <rosparam file="$(find ${moveit_package})/config/controllers.yaml"/>
+</launch>
+"""
+
+def controller_manager_launch(moveit_package, model):
+  rtn = CONTROLLER_MANAGER_LAUNCH_MACRO.replace("${moveit_package}", moveit_package)
+  rtn = rtn.replace("${model}", model)
+  return rtn
+
+
+# moveit_planning_execution.launch macro
+# moveit_package - name of moveit package
+# support_package - name of support package
+# model - robot model
+PLANNING_EXECUTION_LAUNCH_MACRO="""
+<launch>
+  <!-- The planning and execution components of MoveIt! configured to run -->
+  <!-- using the ROS-Industrial interface. -->
+ 
+  <!-- Non-standard joint names:
+       - Create a file [robot_moveit_config]/config/joint_names.yaml
+           controller_joint_names: [joint_1, joint_2, ... joint_N] 
+       - Update with joint names for your robot (in order expected by rbt controller)
+       - and uncomment the following line: -->
+  <rosparam command="load" file="$(find ${support_package})/config/joint_names_${model}.yaml"/>
+ 
+  <!-- the "sim" argument controls whether we connect to a Simulated or Real robot -->
+  <!--  - if sim=false, a robot_ip and controller(fs100|dx100) arguments is required -->
+  <arg name="sim" default="true" />
+  <arg name="robot_ip" unless="$(arg sim)" />
+  <arg name="controller" unless="$(arg sim)" />
+ 
+  <!-- load the robot_description parameter before launching ROS-I nodes -->
+  <include file="$(find ${moveit_package})/launch/planning_context.launch" >
+    <arg name="load_robot_description" value="true" />
+  </include>
+
+  <!-- run the robot simulator and action interface nodes -->
+  <group if="$(arg sim)">
+    <include file="$(find industrial_robot_simulator)/launch/robot_interface_simulator.launch" />
+  </group>
+
+  <!-- run the "real robot" interface nodes -->
+  <!--   - this typically includes: robot_state, motion_interface, and joint_trajectory_action nodes -->
+  <!--   - replace these calls with appropriate robot-specific calls or launch files -->
+  <group unless="$(arg sim)">
+    <include file="$(find ${support_package})/launch/robot_interface_streaming_${model}.launch" >
+      <arg name="robot_ip" value="$(arg robot_ip)"/>
+      <arg name="controller" value="$(arg controller)"/>
+    </include>
+  </group>
+
+  <!-- publish the robot state (tf transforms) -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <include file="$(find ${moveit_package})/launch/move_group.launch">
+    <arg name="publish_monitored_planning_scene" value="true" />
+  </include>
+
+  <include file="$(find ${moveit_package})/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>
+  </include>
+  
+  <include file="$(find ${moveit_package})/launch/default_warehouse_db.launch" />
+
+</launch>
+"""
+
+
+def planning_execution_launch(moveit_package, support_package, model):
+  rtn = PLANNING_EXECUTION_LAUNCH_MACRO.replace("${moveit_package}", moveit_package)
+  rtn = rtn.replace("${support_package}", support_package)
+  rtn = rtn.replace("${model}", model)
+  return rtn

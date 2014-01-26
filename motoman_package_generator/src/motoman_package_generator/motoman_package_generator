@@ -13,6 +13,14 @@ def print_menu():
   print("2. Generate additional moveit files")
   print("3. Exit")
 
+def generate_moveit_package(model):
+  print("Generating additional moveit files for model: ", model)
+  moveit_package = "motoman_" + model + "_moveit_config"
+  support_package = "motoman_" + model + "_support"
+  generate_controller_manager_launch(moveit_package, model)
+  generate_planning_execution_launch(moveit_package, support_package, model)
+  touch(moveit_package + "/config/controllers.yaml")
+  print("TODO: FILL IN CONTROLLERS YAML")
 
 def generate_support_package(model, author, author_email):
   print("Generating support directories for model: ", model)
@@ -100,6 +108,17 @@ def generate_launch_test(package, model):
   fd = open(package + "/test/launch_test.xml", 'w')
   fd.write(text)
 
+def generate_controller_manager_launch(moveit_package, model):
+  print("Generating motoman_" + model + "_moveit_controller_manager.launch.xml")
+  text = macros.controller_manager_launch(moveit_package, model)
+  fd = open(package + "/launch/motoman_" + model + "_moveit_controller_manager.launch.xml", 'w')
+  fd.write(text)
+
+def generate_planning_execution_launch(moveit_package, support_package, model):
+  print("Generating moveit_planning_execution.launch")
+  text = macros.planning_execution_launch(moveit_package, support_package, model)
+  fd = open(package + "/launch/moveit_planning_execution.launch", 'w')
+  fd = write(text)
 
 def main():
 
@@ -118,6 +137,8 @@ def main():
 
   if item == 1:
     generate_support_package(model, author, author_email)
+  elif item == 2:
+    generate_moveit_package(model)
 
 
 if __name__ == '__main__':
