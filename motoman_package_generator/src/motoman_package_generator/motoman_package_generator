@@ -1,0 +1,110 @@
+#!/usr/bin/env python
+
+from __future__ import print_function   
+
+import sys    
+import os      
+
+from xml.dom.minidom import parseString
+  
+import xacro
+import xacro_macros
+
+def print_menu():
+  print("-------Motoman Package Generator-------")
+  print("1. Generate support package")
+  print("2. Generate launch files")
+  print("3. Generate moveit files")
+  print("4. Exit")
+
+
+def generate_support_package(model):
+  print("Generating support directories for model: ", model)
+  package = "motoman_" + model + "_support"
+  #Populate package root directory
+  os.mkdir(package)
+  print("Generating package.xml and CMakelist.txt")
+  generate_cmakelist(package)
+  generate_package_xml(package, model)
+  #Populate package/config directory
+  os.mkdir(package + "/config")
+  print("Generating joint names yaml")
+  open(package + "/config/joint_names_" + model + ".yaml", 'a').close()
+  #Populate package/launch directory
+  os.mkdir(package + "/launch")
+  ##TODO: Add launch files
+  #Populate package/meshes directory
+  os.mkdir(package + "/meshes")
+  os.mkdir(package + "/meshes/" + model)
+  os.mkdir(package + "/meshes/" + model + "/collision")
+  os.mkdir(package + "/meshes/" + model + "/visual")
+  #Populate package/test director
+  os.mkdir(package + "/test")
+  ##TODO: Add launch test
+  os.mkdir(package + "/urdf")
+  open(package + "/urdf/" + model + ".urdf", 'a').close()
+  open(package + "/urdf/" + model + ".xacro", 'a').close()
+  open(package + "/urdf/" + model + "_macro.xacro", 'a').close()
+
+  print("TODO: FILL IN JOINT_NAMES YAML")
+  print("TODO: ADD COLLISION/VISUAL MESHES")
+  print("TODO: FILL IN URDF MACROS/URDFS")
+
+def generate_cmakelist(package):
+  print("Generate CMakeLists.txt")
+  text = """
+cmake_minimum_required(VERSION 2.8.3)
+
+project(""" + package + """)
+
+find_package(catkin REQUIRED)
+
+catkin_package()
+
+find_package(roslaunch)
+roslaunch_add_file_check(test/launch_test.xml)
+
+foreach(dir config launch meshes urdf)
+   install(DIRECTORY ${dir}/
+      DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach(dir)
+"""
+  fd = open(package + "/CMakeLists.txt", 'w')
+  fd.write(text)
+  
+def generate_package_xml(package, model):
+  print("Generating package.xml")
+  macro = xacro_macros.package_xacro(package, model.upper(), "Shaun Edwards", "shaun.edwards@gmail.com")
+  ##print(macro)
+  doc = parseString(macro)
+  xacro.process_includes(doc, os.path.dirname(package))
+  xacro.eval_self_contained(doc)
+  ##print(doc.toprettyxml(indent=' '))
+  text = doc.toprettyxml(indent=' ')
+  fd = open(package + "/package.xml", 'w')
+  fd.write(text)
+
+
+def main():
+
+  if len(sys.argv) < 2:
+    print("Robot model required")
+    sys.exit(1);
+
+  model = sys.argv[1]
+
+  print("Parsing model: ", model, " from command line")
+
+  print_menu()
+  item = input("Select an option: ")
+
+  if item == 1:
+    generate_support_package(model)
+
+
+if __name__ == '__main__':
+  print("This script can be used to auto-generate motoman robot packages")
+  main()
+    
+
+
