@@ -21,6 +21,7 @@ def generate_moveit_package(model):
   generate_planning_execution_launch(moveit_package, support_package, model)
   touch(moveit_package + "/config/controllers.yaml")
   print("TODO: FILL IN CONTROLLERS YAML")
+  print("TODO: CHECK JOINT LIMITS YAML FOR ACCEL/DECEL LIMITS")
 
 def generate_support_package(model, author, author_email):
   print("Generating support directories for model: ", model)
