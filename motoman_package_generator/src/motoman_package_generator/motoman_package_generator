@@ -13,78 +13,65 @@ import xacro_macros
 def print_menu():
   print("-------Motoman Package Generator-------")
   print("1. Generate support package")
-  print("2. Generate launch files")
-  print("3. Generate moveit files")
-  print("4. Exit")
+  print("2. Generate additional moveit files")
+  print("3. Exit")
 
 
-def generate_support_package(model):
+def generate_support_package(model, author, author_email):
   print("Generating support directories for model: ", model)
   package = "motoman_" + model + "_support"
   #Populate package root directory
-  os.mkdir(package)
-  print("Generating package.xml and CMakelist.txt")
+  mkdir(package)
   generate_cmakelist(package)
-  generate_package_xml(package, model)
+  generate_package_xml(package, model, author, author_email)
   #Populate package/config directory
-  os.mkdir(package + "/config")
+  mkdir(package + "/config")
   print("Generating joint names yaml")
-  open(package + "/config/joint_names_" + model + ".yaml", 'a').close()
+  touch(package + "/config/joint_names_" + model + ".yaml")
   #Populate package/launch directory
-  os.mkdir(package + "/launch")
+  mkdir(package + "/launch")
   generate_load_launch(package, model)
   generate_streaming_launch(package, model)
-  ##TODO: Add launch files
+  generate_visualize_launch(package, model)
+  generate_test_model_launch(package, model)
   #Populate package/meshes directory
-  os.mkdir(package + "/meshes")
-  os.mkdir(package + "/meshes/" + model)
-  os.mkdir(package + "/meshes/" + model + "/collision")
-  os.mkdir(package + "/meshes/" + model + "/visual")
-  #Populate package/test director
-  os.mkdir(package + "/test")
-  ##TODO: Add launch test
-  os.mkdir(package + "/urdf")
-  open(package + "/urdf/" + model + ".urdf", 'a').close()
-  open(package + "/urdf/" + model + ".xacro", 'a').close()
-  open(package + "/urdf/" + model + "_macro.xacro", 'a').close()
+  mkdir(package + "/meshes")
+  mkdir(package + "/meshes/" + model)
+  mkdir(package + "/meshes/" + model + "/collision")
+  mkdir(package + "/meshes/" + model + "/visual")
+  #Populate package/test directory
+  mkdir(package + "/test")
+  generate_launch_test(package, model)
+  mkdir(package + "/urdf")
+  touch(package + "/urdf/" + model + ".urdf")
+  touch(package + "/urdf/" + model + ".xacro")
+  touch(package + "/urdf/" + model + "_macro.xacro")
 
   print("TODO: FILL IN JOINT_NAMES YAML")
   print("TODO: ADD COLLISION/VISUAL MESHES")
   print("TODO: FILL IN URDF MACROS/URDFS")
 
+def mkdir(path):
+  try:
+    os.mkdir(path)
+
+  except OSError:
+    print("Directory: " + path + " already exists, ignoring")
+
+def touch(path):
+  open(path, 'a').close()
+
 def generate_cmakelist(package):
   print("Generate CMakeLists.txt")
-  text = """
-cmake_minimum_required(VERSION 2.8.3)
-
-project(""" + package + """)
-
-find_package(catkin REQUIRED)
-
-catkin_package()
-
-find_package(roslaunch)
-roslaunch_add_file_check(test/launch_test.xml)
-
-foreach(dir config launch meshes urdf)
-   install(DIRECTORY ${dir}/
-      DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
-endforeach(dir)
-"""
+  cmake_text = xacro_macros.cmakelist(package)
   fd = open(package + "/CMakeLists.txt", 'w')
-  fd.write(text)
+  fd.write(cmake_text)
   
-def generate_package_xml(package, model):
+def generate_package_xml(package, model, author, author_email):
   print("Generating package.xml")
-  macro = xacro_macros.package_xacro(package, model.upper(), "Shaun Edwards", "shaun.edwards@gmail.com")
-  ##print(macro)
-  doc = parseString(macro)
-  xacro.process_includes(doc, os.path.dirname(package))
-  xacro.eval_self_contained(doc)
-  ##print(doc.toprettyxml(indent=' '))
-  text = doc.toprettyxml(indent=' ')
+  package_text = xacro_macros.package_xml(package, model, author, author_email)
   fd = open(package + "/package.xml", 'w')
-  fd.write(text)
+  fd.write(package_text)
 
 def generate_load_launch(package, model):
   print("Generating load_" + model + ".launch")
@@ -98,14 +85,34 @@ def generate_streaming_launch(package, model):
   fd = open(package + "/launch/robot_interface_streaming_" + model + ".launch", 'w')
   fd.write(launch_text)
 
+def generate_visualize_launch(package, model):
+  print("Generating robot_state_visualize_" + model + ".launch")
+  launch_text = xacro_macros.state_vis_launch(package, model)
+  fd = open(package + "/launch/robot_state_visualize_" + model + ".launch", 'w')
+  fd.write(launch_text)
+
+def generate_test_model_launch(package, model):
+  print("Generating test_" + model + ".launch")
+  launch_text = xacro_macros.test_model_launch(package, model)
+  fd = open(package + "/launch/test_" + model + ".launch", 'w')
+  fd.write(launch_text)
+
+def generate_launch_test(package, model):
+  print("Generating launch_test.xml")
+  text = xacro_macros.launch_test(package, model)
+  fd = open(package + "/test/launch_test.xml", 'w')
+  fd.write(text)
+
 
 def main():
 
-  if len(sys.argv) < 2:
-    print("Robot model required")
+  if len(sys.argv) < 4:
+    print("Robot model, author, & email required")
     sys.exit(1);
 
   model = sys.argv[1]
+  author = sys.argv[2]
+  author_email = sys.argv[3]
 
   print("Parsing model: ", model, " from command line")
 
@@ -113,7 +120,7 @@ def main():
   item = input("Select an option: ")
 
   if item == 1:
-    generate_support_package(model)
+    generate_support_package(model, author, author_email)
 
 
 if __name__ == '__main__':
