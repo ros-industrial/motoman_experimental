@@ -31,8 +31,7 @@ def cmakelist(package):
 # author - authors name
 # author_email - authors email
 PACKAGE_XML_MACRO="""
-<?xml version="1.0" ?>
-<package xmlns:xacro="http://ros.org/wiki/xacro">
+<package>
  <name>${package}</name>
  <version>0.1.0</version>
  <description>

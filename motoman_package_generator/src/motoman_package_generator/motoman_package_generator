@@ -5,10 +5,7 @@ from __future__ import print_function
 import sys    
 import os      
 
-from xml.dom.minidom import parseString
-  
-import xacro
-import xacro_macros
+import macros
 
 def print_menu():
   print("-------Motoman Package Generator-------")
@@ -63,43 +60,43 @@ def touch(path):
 
 def generate_cmakelist(package):
   print("Generate CMakeLists.txt")
-  cmake_text = xacro_macros.cmakelist(package)
+  cmake_text = macros.cmakelist(package)
   fd = open(package + "/CMakeLists.txt", 'w')
   fd.write(cmake_text)
   
 def generate_package_xml(package, model, author, author_email):
   print("Generating package.xml")
-  package_text = xacro_macros.package_xml(package, model, author, author_email)
+  package_text = macros.package_xml(package, model, author, author_email)
   fd = open(package + "/package.xml", 'w')
   fd.write(package_text)
 
 def generate_load_launch(package, model):
   print("Generating load_" + model + ".launch")
-  launch_text = xacro_macros.load_launch(package, model)
+  launch_text = macros.load_launch(package, model)
   fd = open(package + "/launch/load_" + model + ".launch", 'w')
   fd.write(launch_text)
 
 def generate_streaming_launch(package, model):
   print("Generating robot_streaming_interface_" + model + ".launch")
-  launch_text = xacro_macros.streaming_launch(package, model)
+  launch_text = macros.streaming_launch(package, model)
   fd = open(package + "/launch/robot_interface_streaming_" + model + ".launch", 'w')
   fd.write(launch_text)
 
 def generate_visualize_launch(package, model):
   print("Generating robot_state_visualize_" + model + ".launch")
-  launch_text = xacro_macros.state_vis_launch(package, model)
+  launch_text = macros.state_vis_launch(package, model)
   fd = open(package + "/launch/robot_state_visualize_" + model + ".launch", 'w')
   fd.write(launch_text)
 
 def generate_test_model_launch(package, model):
   print("Generating test_" + model + ".launch")
-  launch_text = xacro_macros.test_model_launch(package, model)
+  launch_text = macros.test_model_launch(package, model)
   fd = open(package + "/launch/test_" + model + ".launch", 'w')
   fd.write(launch_text)
 
 def generate_launch_test(package, model):
   print("Generating launch_test.xml")
-  text = xacro_macros.launch_test(package, model)
+  text = macros.launch_test(package, model)
   fd = open(package + "/test/launch_test.xml", 'w')
   fd.write(text)
 
