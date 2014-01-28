@@ -40,7 +40,7 @@ PACKAGE_XML_MACRO="""
     </p>
   <p>
       This package contains configuration data, 3D models and launch files
-      for Motoman ${model} manipulators. This currently includes on variants.
+      for Motoman ${model} manipulators.
     </p>
   <p>
    <b>Specifications</b>
