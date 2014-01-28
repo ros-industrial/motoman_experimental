@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: motoman_sia5d_support
+    relative_path: urdf/sia5d.urdf
+  SRDF:
+    relative_path: config/motoman_sia5d.srdf
+  CONFIG:
+    generated_timestamp: 1390732572
