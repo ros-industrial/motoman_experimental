@@ -33,7 +33,7 @@ def cmakelist(package):
 PACKAGE_XML_MACRO="""
 <package>
  <name>${package}</name>
- <version>0.1.0</version>
+ <version>${version}</version>
  <description>
   <p>
       ROS Industrial support for the Motoman ${model} (and variants).
@@ -68,6 +68,7 @@ PACKAGE_XML_MACRO="""
  <url type="bugtracker">https://github.com/ros-industrial/motoman/issues</url>
  <url type="repository">https://github.com/ros-industrial/motoman</url>
  <buildtool_depend>catkin</buildtool_depend>
+ <build_depend>roslaunch</build_depend>
  <run_depend>motoman_driver</run_depend>
  <run_depend>robot_state_publisher</run_depend>
  <run_depend>rviz</run_depend>
@@ -77,11 +78,12 @@ PACKAGE_XML_MACRO="""
  </export>
 </package>
 """
-def package_xml(package, model, author, author_email):
+def package_xml(package, model, author, author_email, version):
   rtn = PACKAGE_XML_MACRO.replace("${package}", package)
   rtn = rtn.replace("${model}", model)
   rtn = rtn.replace("${author}", author)
   rtn = rtn.replace("${author_email}", author_email)
+  rtn = rtn.replace("${version}", version)
   return rtn
 
 

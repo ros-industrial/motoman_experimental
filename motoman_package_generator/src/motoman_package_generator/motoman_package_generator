@@ -23,13 +23,13 @@ def generate_moveit_package(model):
   print("TODO: FILL IN CONTROLLERS YAML")
   print("TODO: CHECK JOINT LIMITS YAML FOR ACCEL/DECEL LIMITS")
 
-def generate_support_package(model, author, author_email):
+def generate_support_package(model, author, author_email, version):
   print("Generating support directories for model: ", model)
   package = "motoman_" + model + "_support"
   #Populate package root directory
   mkdir(package)
   generate_cmakelist(package)
-  generate_package_xml(package, model, author, author_email)
+  generate_package_xml(package, model, author, author_email, version)
   #Populate package/config directory
   mkdir(package + "/config")
   print("Generating joint names yaml")
@@ -73,9 +73,9 @@ def generate_cmakelist(package):
   fd = open(package + "/CMakeLists.txt", 'w')
   fd.write(cmake_text)
   
-def generate_package_xml(package, model, author, author_email):
+def generate_package_xml(package, model, author, author_email, version):
   print("Generating package.xml")
-  package_text = macros.package_xml(package, model, author, author_email)
+  package_text = macros.package_xml(package, model, author, author_email, version)
   fd = open(package + "/package.xml", 'w')
   fd.write(package_text)
 
@@ -123,13 +123,14 @@ def generate_planning_execution_launch(moveit_package, support_package, model):
 
 def main():
 
-  if len(sys.argv) < 4:
-    print("Robot model, author, & email required")
+  if len(sys.argv) < 5:
+    print("Robot model, author, email & version required")
     sys.exit(1);
 
   model = sys.argv[1]
   author = sys.argv[2]
   author_email = sys.argv[3]
+  version = sys.argv[4]
 
   print("Parsing model: ", model, " from command line")
 
@@ -137,7 +138,7 @@ def main():
   item = input("Select an option: ")
 
   if item == 1:
-    generate_support_package(model, author, author_email)
+    generate_support_package(model, author, author_email, version)
   elif item == 2:
     generate_moveit_package(model)
 
