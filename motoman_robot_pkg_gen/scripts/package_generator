@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+   
+from industrial_robot_pkg_gen.cmd_line_interface import *
+
+
+if __name__ == '__main__':
+
+  cli = CmdLineInterface(def_t_paths = ['motoman_robot_pkg_gen/resources','industrial_robot_pkg_gen/resources'])
+  cli.add_sub_cmd(SupportSubCmd())
+  cli.add_sub_cmd(MoveitSubCmd())
+  cli.run()
+
+
+

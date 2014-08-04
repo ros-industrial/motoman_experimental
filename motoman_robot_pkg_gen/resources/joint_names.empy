@@ -1,0 +1,1 @@
+controller_joint_names: [@[if int(num_joints) == 7]'joint_s', 'joint_l', 'joint_u', 'joint_r', 'joint_b', 'joint_t', 'joint_e'@[elif int(num_joints) == 6]'joint_s', 'joint_l', 'joint_u', 'joint_r', 'joint_b', 'joint_t'@[else]INVALID_NUM_JOINTS@[end if]]

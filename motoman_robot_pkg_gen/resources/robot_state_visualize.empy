@@ -1,0 +1,28 @@
+<!--
+  Manipulator specific version of the state visualizer.
+
+  Defaults provided for @(model):
+   -  @(num_joints) joints
+
+  Usage:
+    robot_state_visualize_@(model).launch robot_ip:=<value> controller:=<fs100|dx100>
+-->
+<launch>
+	<arg name="robot_ip" />
+
+  <!-- controller: Controller name (fs100 or dx100) -->
+  <arg name="controller" />
+
+	<rosparam command="load" file="$(find @(package))/config/joint_names_@(model).yaml" />
+
+	<include file="$(find motoman_driver)/launch/robot_state_$(arg controller).launch">
+		<arg name="robot_ip"   value="$(arg robot_ip)" />
+	</include>
+
+	<node name="robot_state_publisher" pkg="robot_state_publisher" 
+		type="robot_state_publisher" />
+
+	<include file="$(find @(package))/launch/load_@(model).launch" />
+
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find industrial_robot_client)/config/robot_state_visualize.rviz" required="true" />
+</launch>
