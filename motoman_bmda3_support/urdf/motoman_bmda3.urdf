@@ -11,7 +11,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/base_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/base_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1"/>
@@ -20,7 +20,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/base_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/base_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -28,7 +28,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/waist_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/waist_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1"/>
@@ -37,7 +37,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/waist_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/waist_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -45,7 +45,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_L_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_L_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1"/>
@@ -54,7 +54,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_L_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_L_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -62,7 +62,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_E_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_E_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1"/>
@@ -71,7 +71,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_E_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_E_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -79,7 +79,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_U_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_U_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -88,7 +88,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_U_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_U_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -96,7 +96,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_R_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_R_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -105,7 +105,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_R_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_R_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -113,7 +113,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_B_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_B_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -122,7 +122,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_B_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_B_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -130,7 +130,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_T_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_T_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -139,7 +139,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_T_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_T_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -147,7 +147,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_tool_0.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_tool_0.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -156,7 +156,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_tool_0.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_tool_0.stl"/>
       </geometry>
     </collision>
   </link>
@@ -164,7 +164,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_L_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_L_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -173,7 +173,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_L_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_L_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -181,7 +181,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_E_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_E_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -190,7 +190,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_E_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_E_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -198,7 +198,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_U_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_U_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -207,7 +207,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_U_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_U_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -215,7 +215,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_R_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_R_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -224,7 +224,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_R_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_R_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -232,7 +232,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_B_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_B_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -241,7 +241,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_B_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_B_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -249,7 +249,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_T_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_T_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -258,7 +258,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_T_link.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_T_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -266,7 +266,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_tool_0.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_tool_0.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -275,7 +275,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_tool_0.STL"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_tool_0.stl"/>
       </geometry>
     </collision>
   </link>
