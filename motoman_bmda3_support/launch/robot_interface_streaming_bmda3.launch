@@ -1,0 +1,18 @@
+<!--
+  Manipulator specific version of 'robot_interface_streaming.launch'.
+
+  Defaults provided for bmda3:
+   - 6 joints
+
+  Usage:
+    robot_interface_streaming_bmda3.launch robot_ip:=<value>
+-->
+<launch>
+  <arg name="robot_ip" />
+
+  <rosparam command="load" file="$(find motoman_bmda3_support)/config/joint_names_bmda3.yaml" />
+
+  <include file="$(find motoman_driver)/launch/robot_interface_streaming.launch">
+    <arg name="robot_ip"   value="$(arg robot_ip)" />
+  </include>
+</launch>
