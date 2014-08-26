@@ -4,14 +4,14 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="motoman_bmda3" xmlns:xacro="http://ros.org/wiki/xacro">
-  <link name="world">
+  <link name="base_link">
     <origin rpy="0 0 0" xyz="0 0 0"/>
   </link>
-  <link name="base_link">
+  <link name="base">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/base_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/base.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1"/>
@@ -20,7 +20,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/base_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/base.stl"/>
       </geometry>
     </collision>
   </link>
@@ -41,11 +41,11 @@
       </geometry>
     </collision>
   </link>
-  <link name="right_L_link">
+  <link name="right_link_L">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_L_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_link_L.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1"/>
@@ -54,15 +54,15 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_L_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_link_L.stl"/>
       </geometry>
     </collision>
   </link>
-  <link name="right_E_link">
+  <link name="right_link_E">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_E_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_link_E.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1"/>
@@ -71,15 +71,15 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_E_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_link_E.stl"/>
       </geometry>
     </collision>
   </link>
-  <link name="right_U_link">
+  <link name="right_link_U">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_U_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_link_U.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -88,15 +88,15 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_U_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_link_U.stl"/>
       </geometry>
     </collision>
   </link>
-  <link name="right_R_link">
+  <link name="right_link_R">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_R_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_link_R.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -105,15 +105,15 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_R_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_link_R.stl"/>
       </geometry>
     </collision>
   </link>
-  <link name="right_B_link">
+  <link name="right_link_B">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_B_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_link_B.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -122,15 +122,15 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_B_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_link_B.stl"/>
       </geometry>
     </collision>
   </link>
-  <link name="right_T_link">
+  <link name="right_link_T">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_T_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/right_link_T.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -139,7 +139,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_T_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/right_link_T.stl"/>
       </geometry>
     </collision>
   </link>
@@ -160,11 +160,11 @@
       </geometry>
     </collision>
   </link>
-  <link name="left_L_link">
+  <link name="left_link_L">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_L_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_link_L.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -173,15 +173,15 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_L_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_link_L.stl"/>
       </geometry>
     </collision>
   </link>
-  <link name="left_E_link">
+  <link name="left_link_E">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_E_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_link_E.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -190,15 +190,15 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_E_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_link_E.stl"/>
       </geometry>
     </collision>
   </link>
-  <link name="left_U_link">
+  <link name="left_link_U">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_U_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_link_U.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -207,15 +207,15 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_U_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_link_U.stl"/>
       </geometry>
     </collision>
   </link>
-  <link name="left_R_link">
+  <link name="left_link_R">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_R_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_link_R.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -224,15 +224,15 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_R_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_link_R.stl"/>
       </geometry>
     </collision>
   </link>
-  <link name="left_B_link">
+  <link name="left_link_B">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_B_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_link_B.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -241,15 +241,15 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_B_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_link_B.stl"/>
       </geometry>
     </collision>
   </link>
-  <link name="left_T_link">
+  <link name="left_link_T">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_T_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/left_link_T.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1"/>
@@ -258,7 +258,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_T_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/left_link_T.stl"/>
       </geometry>
     </collision>
   </link>
@@ -279,111 +279,111 @@
       </geometry>
     </collision>
   </link>
-  <joint name="world-base" type="fixed">
+  <joint name="base_link-base" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0"/>
-    <parent link="world"/>
-    <child link="base_link"/>
-  </joint>
-  <joint name="waist_axis" type="revolute">
     <parent link="base_link"/>
+    <child link="base"/>
+  </joint>
+  <joint name="waist" type="revolute">
+    <parent link="base"/>
     <child link="waist_link"/>
     <origin rpy="0 0 0" xyz="0 0 0.3305"/>
     <axis xyz="0 0 1"/>
     <limit effort="0" lower="-3.14" upper="3.14" velocity="2.27"/>
   </joint>
-  <joint name="right_S_axis" type="revolute">
+  <joint name="right_joint_S" type="revolute">
     <parent link="waist_link"/>
-    <child link="right_L_link"/>
+    <child link="right_link_L"/>
     <origin rpy="0 0 0" xyz="0.15002 -0.099 0.12951"/>
     <axis xyz="0 1 0"/>
     <limit effort="0" lower="-1.57" upper="3.14" velocity="2.97"/>
   </joint>
-  <joint name="right_L_axis" type="revolute">
-    <parent link="right_L_link"/>
-    <child link="right_E_link"/>
+  <joint name="right_joint_L" type="revolute">
+    <parent link="right_link_L"/>
+    <child link="right_link_E"/>
     <origin rpy="0 0 0" xyz="0 -0.151 0"/>
     <axis xyz="0 0 1"/>
     <limit effort="0" lower="-1.745" upper="1.745" velocity="2.62"/>
   </joint>
-  <joint name="right_E_axis" type="revolute">
-    <parent link="right_E_link"/>
-    <child link="right_U_link"/>
+  <joint name="right_joint_E" type="revolute">
+    <parent link="right_link_E"/>
+    <child link="right_link_U"/>
     <origin rpy="0 0 0" xyz="0 -0.23549999999989 0"/>
     <axis xyz="0 1 0"/>
     <limit effort="0" lower="-2.966" upper="2.966" velocity="2.97"/>
   </joint>
-  <joint name="right_U_axis" type="revolute">
-    <parent link="right_U_link"/>
-    <child link="right_R_link"/>
+  <joint name="right_joint_U" type="revolute">
+    <parent link="right_link_U"/>
+    <child link="right_link_R"/>
     <origin rpy="0 0 0" xyz="0.065002 -0.1445 0"/>
     <axis xyz="0 0 -1"/>
     <limit effort="0" lower="-1.396" upper="0.7504" velocity="2.97"/>
   </joint>
-  <joint name="right_R_axis" type="revolute">
-    <parent link="right_R_link"/>
-    <child link="right_B_link"/>
+  <joint name="right_joint_R" type="revolute">
+    <parent link="right_link_R"/>
+    <child link="right_link_B"/>
     <origin rpy="0 0 0" xyz="0.35997 -0.05 0"/>
     <axis xyz="1 0 0"/>
     <limit effort="0" lower="-3.1415" upper="3.1415" velocity="3.49"/>
   </joint>
-  <joint name="right_B_axis" type="revolute">
-    <parent link="right_B_link"/>
-    <child link="right_T_link"/>
+  <joint name="right_joint_B" type="revolute">
+    <parent link="right_link_B"/>
+    <child link="right_link_T"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis xyz="0 0 -1"/>
     <limit effort="0" lower="-1.9198" upper="1.9198" velocity="3.49"/>
   </joint>
-  <joint name="right_T_axis" type="revolute">
-    <parent link="right_T_link"/>
+  <joint name="right_joint_T" type="revolute">
+    <parent link="right_link_T"/>
     <child link="right_tool_0"/>
     <origin rpy="0 0 0" xyz="0.138 0 0"/>
     <axis xyz="1 0 0"/>
     <limit effort="0" lower="-4.712" upper="4.712" velocity="6.11"/>
   </joint>
-  <joint name="left_S_axis" type="revolute">
+  <joint name="left_joint_S" type="revolute">
     <parent link="waist_link"/>
-    <child link="left_L_link"/>
+    <child link="left_link_L"/>
     <origin rpy="0 0 0" xyz="0.15003 0.099 0.1295"/>
     <axis xyz="0 1 0"/>
     <limit effort="0" lower="-1.57" upper="3.1415" velocity="2.97"/>
   </joint>
-  <joint name="left_L_axis" type="revolute">
-    <parent link="left_L_link"/>
-    <child link="left_E_link"/>
+  <joint name="left_joint_L" type="revolute">
+    <parent link="left_link_L"/>
+    <child link="left_link_E"/>
     <origin rpy="0 0 0" xyz="0 0.151 0"/>
     <axis xyz="0 0 -1"/>
     <limit effort="0" lower="-1.745" upper="1.745" velocity="2.62"/>
   </joint>
-  <joint name="left_E_axis" type="revolute">
-    <parent link="left_E_link"/>
-    <child link="left_U_link"/>
+  <joint name="left_joint_E" type="revolute">
+    <parent link="left_link_E"/>
+    <child link="left_link_U"/>
     <origin rpy="0 0 0" xyz="0 0.23549999999989 0"/>
     <axis xyz="0 1 0"/>
     <limit effort="0" lower="-2.966" upper="2.966" velocity="2.97"/>
   </joint>
-  <joint name="left_U_axis" type="revolute">
-    <parent link="left_U_link"/>
-    <child link="left_R_link"/>
+  <joint name="left_joint_U" type="revolute">
+    <parent link="left_link_U"/>
+    <child link="left_link_R"/>
     <origin rpy="0 0 0" xyz="0.065 0.1445 0"/>
     <axis xyz="0 0 1"/>
     <limit effort="0" lower="-1.396" upper="0.7504" velocity="2.97"/>
   </joint>
-  <joint name="left_R_axis" type="revolute">
-    <parent link="left_R_link"/>
-    <child link="left_B_link"/>
+  <joint name="left_joint_R" type="revolute">
+    <parent link="left_link_R"/>
+    <child link="left_link_B"/>
     <origin rpy="0 0 0" xyz="0.35997 0.05 0"/>
     <axis xyz="-1 0 0"/>
     <limit effort="0" lower="-3.1415" upper="3.1415" velocity="3.49"/>
   </joint>
-  <joint name="left_B_axis" type="revolute">
-    <parent link="left_B_link"/>
-    <child link="left_T_link"/>
+  <joint name="left_joint_B" type="revolute">
+    <parent link="left_link_B"/>
+    <child link="left_link_T"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis xyz="0 0 1"/>
     <limit effort="0" lower="-1.9198" upper="1.9198" velocity="3.49"/>
   </joint>
-  <joint name="left_T_axis" type="revolute">
-    <parent link="left_T_link"/>
+  <joint name="left_joint_T" type="revolute">
+    <parent link="left_link_T"/>
     <child link="left_tool_0"/>
     <origin rpy="0 0 0" xyz="0.138 0 0"/>
     <axis xyz="-1 0 0"/>
