@@ -33,14 +33,14 @@
   </link>
 
   <link
-    name="${prefix}waist_link">
+    name="${prefix}torso_link_b1">
     <visual>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://motoman_bmda3_support/meshes/bmda3/visual/waist_link.stl" />
+          filename="package://motoman_bmda3_support/meshes/bmda3/visual/torso_link.stl" />
       </geometry>
       <material
         name="">
@@ -54,7 +54,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://motoman_bmda3_support/meshes/bmda3/collision/waist_link.stl" />
+          filename="package://motoman_bmda3_support/meshes/bmda3/collision/torso_link.stl" />
       </geometry>
     </collision>
   </link>
@@ -223,6 +223,33 @@
 
   <link name="${prefix}right_tool0" />
   
+  <!-- Note that the redundant torso link b2 is introduced to match the phantom joint in the controller -->
+  <link
+    name="${prefix}torso_link_b2">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://motoman_bmda3_support/meshes/bmda3/visual/torso_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://motoman_bmda3_support/meshes/bmda3/collision/torso_link.stl" />
+      </geometry>
+    </collision>
+  </link>
   <link
     name="${prefix}left_link_l">
     <visual>
@@ -395,15 +422,15 @@
    	<parent link="${prefix}base_link" />
    	<child link="${prefix}base"/>
   	</joint>
-    <joint name="${prefix}waist" type="revolute"> 
+    <joint name="${prefix}torso_joint_b1" type="revolute"> 
           <parent link="${prefix}base" />
-          <child  link="${prefix}waist_link" />
+          <child  link="${prefix}torso_link_b1" />
           <origin xyz="0 0 0.3305" rpy="0 0 0" />
           <axis xyz="0 0 1" />
           <limit lower="-3.1415" upper="3.1415" effort="0" velocity="2.27" />
     </joint>
     <joint name="${prefix}right_joint_s" type="revolute">
-          <parent link="${prefix}waist_link" />
+          <parent link="${prefix}torso_link_b1" />
           <child link="${prefix}right_link_l" />
           <origin xyz="0.15002 -0.099 0.12951" rpy="0 0 0" />
           <axis xyz="0 1 0" />
@@ -452,8 +479,16 @@
           <limit lower="-4.712" upper="4.712" effort="0" velocity="6.11" />
     </joint>
     
+    <!-- Note that the redundant torso joint b2 is introduced to match the phantom joint in the controller -->
+    <joint name="${prefix}torso_joint_b2" type="revolute"> 
+          <parent link="${prefix}base" />
+          <child  link="${prefix}torso_link_b2" />
+          <origin xyz="0 0 0.3305" rpy="0 0 0" />
+          <axis xyz="0 0 1" />
+          <limit lower="-3.1415" upper="3.1415" effort="0" velocity="2.27" />
+    </joint>
     <joint name="${prefix}left_joint_s" type="revolute">
-          <parent link="${prefix}waist_link" />
+          <parent link="${prefix}torso_link_b1" />
           <child link="${prefix}left_link_l" />
           <origin xyz="0.15003 0.099 0.1295" rpy="0 0 0" />
           <axis xyz="0 1 0" />

@@ -24,11 +24,11 @@
       </geometry>
     </collision>
   </link>
-  <link name="waist_link">
+  <link name="torso_link_b1">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/waist_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/torso_link.stl"/>
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1"/>
@@ -37,7 +37,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/waist_link.stl"/>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/torso_link.stl"/>
       </geometry>
     </collision>
   </link>
@@ -144,6 +144,23 @@
     </collision>
   </link>
   <link name="right_tool0"/>
+  <link name="torso_link_b2">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/visual/torso_link.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://motoman_bmda3_support/meshes/bmda3/collision/torso_link.stl"/>
+      </geometry>
+    </collision>
+  </link>
   <link name="left_link_l">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -252,15 +269,15 @@
     <parent link="base_link"/>
     <child link="base"/>
   </joint>
-  <joint name="waist" type="revolute">
+  <joint name="torso_joint_b1" type="revolute">
     <parent link="base"/>
-    <child link="waist_link"/>
+    <child link="torso_link_b1"/>
     <origin rpy="0 0 0" xyz="0 0 0.3305"/>
     <axis xyz="0 0 1"/>
     <limit effort="0" lower="-3.1415" upper="3.1415" velocity="2.27"/>
   </joint>
   <joint name="right_joint_s" type="revolute">
-    <parent link="waist_link"/>
+    <parent link="torso_link_b1"/>
     <child link="right_link_l"/>
     <origin rpy="0 0 0" xyz="0.15002 -0.099 0.12951"/>
     <axis xyz="0 1 0"/>
@@ -308,8 +325,15 @@
     <axis xyz="1 0 0"/>
     <limit effort="0" lower="-4.712" upper="4.712" velocity="6.11"/>
   </joint>
+  <joint name="torso_joint_b2" type="revolute">
+    <parent link="base"/>
+    <child link="torso_link_b2"/>
+    <origin rpy="0 0 0" xyz="0 0 0.3305"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="0" lower="-3.1415" upper="3.1415" velocity="2.27"/>
+  </joint>
   <joint name="left_joint_s" type="revolute">
-    <parent link="waist_link"/>
+    <parent link="torso_link_b1"/>
     <child link="left_link_l"/>
     <origin rpy="0 0 0" xyz="0.15003 0.099 0.1295"/>
     <axis xyz="0 1 0"/>
