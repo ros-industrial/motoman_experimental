@@ -1,6 +1,0 @@
-<?xml version="1.0" ?>
-
-<robot name="motoman_bmda3" xmlns:xacro="http://ros.org/wiki/xacro">
-	<xacro:include filename="$(find motoman_bmda3_support)/urdf/motoman_bmda3_macro.xacro" />
-	<xacro:motoman_bmda3 prefix=""/>
-</robot>
