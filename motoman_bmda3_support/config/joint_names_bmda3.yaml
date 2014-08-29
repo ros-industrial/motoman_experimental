@@ -1,1 +1,1 @@
-controller_joint_names: ['joint_s', 'joint_l', 'joint_u', 'joint_r', 'joint_b', 'joint_t']
+controller_joint_names: ['left_joint_s','left_joint_l','left_joint_e','left_joint_u', 'left_joint_r', 'left_joint_b', 'left_joint_t','right_joint_s','right_joint_l','right_joint_e','right_joint_u', 'right_joint_r', 'right_joint_b', 'right_joint_t','torso_joint_b1','torso_joint_b1',]
