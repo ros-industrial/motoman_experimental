@@ -2,7 +2,7 @@
 <package>
   <name>motoman_robot_pkg_gen</name>
   <version>0.0.0</version>
-  <description>The motoman_robot_pkg_gen package generates robot packages that conform to the ROS-Industrial package specification.  http://wiki.ros.org/Industrial/Tutorials/SuggestedPackageLayoutNewRepositories</description>
+  <description>The motoman_robot_pkg_gen package generates robot support packages that conform to the ROS-Industrial package specification.  http://wiki.ros.org/Industrial/Tutorials/SuggestedPackageLayoutNewRepositories</description>
 
   <maintainer email="shaun.edwards@gmail.com">Shaun Edwards</maintainer>
   <license>Apache2.0</license>

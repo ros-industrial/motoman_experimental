@@ -5,7 +5,7 @@ from industrial_robot_pkg_gen.cmd_line_interface import *
 
 if __name__ == '__main__':
 
-  cli = CmdLineInterface(def_t_paths = ['motoman_robot_pkg_gen/resources','industrial_robot_pkg_gen/resources'], def_prefix = 'motoman')
+  cli = CmdLineInterface(def_t_paths = ['motoman_robot_pkg_gen/templates','industrial_robot_pkg_gen/templates'], def_prefix = 'motoman')
   cli.add_sub_cmd(SupportSubCmd())
   cli.add_sub_cmd(MoveitSubCmd())
   cli.run()

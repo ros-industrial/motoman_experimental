@@ -8,6 +8,8 @@ find_package(catkin REQUIRED COMPONENTS
   industrial_robot_pkg_gen
 )
 
+catkin_package(CATKIN_DEPENDS industrial_robot_pkg_gen)
+
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
