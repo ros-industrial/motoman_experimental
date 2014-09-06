@@ -1,0 +1,4 @@
+bmda3_w_effs/bmda3_w_effs_r1_controller: [left_joint_s,left_joint_l,left_joint_e,left_joint_u,left_joint_r,left_joint_b,left_joint_t]
+bmda3_w_effs/bmda3_w_effs_b1_controller: [torso_joint_b1]
+bmda3_w_effs/bmda3_w_effs_b2_controller: [torso_joint_b2]
+bmda3_w_effs/bmda3_w_effs_r2_controller: [right_joint_s,right_joint_l,right_joint_e,right_joint_u,right_joint_r,right_joint_b,right_joint_t]
