@@ -1,8 +1,0 @@
-moveit_setup_assistant_config:
-  URDF:
-    package: motoman_bmda3_support
-    relative_path: urdf/bmda3_w_effs.urdf
-  SRDF:
-    relative_path: config/motoman_bmda3_w_effs.srdf
-  CONFIG:
-    generated_timestamp: 1409955733

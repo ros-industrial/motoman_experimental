@@ -429,49 +429,49 @@
           <axis xyz="0 0 1" />
           <limit lower="-3.1415" upper="3.1415" effort="0" velocity="2.27" />
     </joint>
-    <joint name="${prefix}right_joint_s" type="revolute">
+    <joint name="${prefix}right_joint_1_s" type="revolute">
           <parent link="${prefix}torso_link_b1" />
           <child link="${prefix}right_link_l" />
           <origin xyz="0.15002 -0.099 0.12951" rpy="0 0 0" />
           <axis xyz="0 1 0" />
           <limit lower="-1.570" upper="3.1415" effort="0" velocity="2.97" />
     </joint>
-    <joint name="${prefix}right_joint_l" type="revolute">    
+    <joint name="${prefix}right_joint_2_l" type="revolute">    
           <parent link="${prefix}right_link_l" />
           <child link="${prefix}right_link_e" />
           <origin xyz="0 -0.151 0" rpy="0 0 0" />    
           <axis xyz="0 0 1" />
           <limit lower="-1.745" upper="1.745" effort="0" velocity="2.62" />
     </joint>
-    <joint name="${prefix}right_joint_e" type="revolute">
+    <joint name="${prefix}right_joint_3_e" type="revolute">
           <parent link="${prefix}right_link_e" />
           <child link="${prefix}right_link_u" />
           <origin xyz="0 -0.23549999999989 0" rpy="0 0 0" />          
           <axis xyz="0 1 0" />
           <limit lower="-2.966" upper="2.966" effort="0" velocity="2.97" />
     </joint>
-    <joint name="${prefix}right_joint_u" type="revolute">
+    <joint name="${prefix}right_joint_4_u" type="revolute">
           <parent link="${prefix}right_link_u" />
           <child link="${prefix}right_link_r" />
           <origin xyz="0.065002 -0.1445 0" rpy="0 0 0" />          
           <axis xyz="0 0 -1" />
           <limit lower="-1.396" upper="0.7504" effort="0" velocity="2.97" />
     </joint>
-    <joint name="${prefix}right_joint_r" type="revolute">
+    <joint name="${prefix}right_joint_5_r" type="revolute">
           <parent link="${prefix}right_link_r" />
           <child link="${prefix}right_link_b" />
           <origin xyz="0.35997 -0.05 0" rpy="0 0 0" />          
           <axis xyz="1 0 0" />
           <limit lower="-3.1415" upper="3.1415" effort="0" velocity="3.49" />
     </joint>
-    <joint name="${prefix}right_joint_b" type="revolute">
+    <joint name="${prefix}right_joint_6_b" type="revolute">
           <parent link="${prefix}right_link_b" />
           <child link="${prefix}right_link_t" />
           <origin xyz="0 0 0" rpy="0 0 0" />
           <axis xyz="0 0 -1" />
           <limit lower="-1.9198" upper="1.9198" effort="0" velocity="3.49" />
     </joint>
-    <joint name="${prefix}right_joint_t" type="revolute">
+    <joint name="${prefix}right_joint_7_t" type="revolute">
           <parent link="${prefix}right_link_t" />
           <child link="${prefix}right_tool0" />
           <origin xyz="0.138 0 0" rpy="0 0 0"  />
@@ -487,49 +487,49 @@
           <axis xyz="0 0 1" />
           <limit lower="-3.1415" upper="3.1415" effort="0" velocity="2.27" />
     </joint>
-    <joint name="${prefix}left_joint_s" type="revolute">
+    <joint name="${prefix}left_joint_1_s" type="revolute">
           <parent link="${prefix}torso_link_b1" />
           <child link="${prefix}left_link_l" />
           <origin xyz="0.15003 0.099 0.1295" rpy="0 0 0" />
           <axis xyz="0 1 0" />
           <limit lower="-1.570" upper="3.1415" effort="0" velocity="2.97" />
     </joint>
-    <joint name="${prefix}left_joint_l" type="revolute">
+    <joint name="${prefix}left_joint_2_l" type="revolute">
           <parent link="${prefix}left_link_l" />
           <child link="${prefix}left_link_e" />
           <origin xyz="0 0.151 0" rpy="0 0 0" />
           <axis xyz="0 0 -1" />
           <limit lower="-1.745" upper="1.745" effort="0" velocity="2.62" />
     </joint>
-    <joint name="${prefix}left_joint_e" type="revolute">
+    <joint name="${prefix}left_joint_3_e" type="revolute">
           <parent link="${prefix}left_link_e" />
           <child link="${prefix}left_link_u" />
           <origin xyz="0 0.23549999999989 0" rpy="0 0 0" />
           <axis xyz="0 1 0" />
         <limit lower="-2.966" upper="2.966" effort="0" velocity="2.97" />
     </joint>
-    <joint name="${prefix}left_joint_u" type="revolute">
+    <joint name="${prefix}left_joint_4_u" type="revolute">
           <parent link="${prefix}left_link_u" />
           <child link="${prefix}left_link_r" />
           <origin xyz="0.065 0.1445 0" rpy="0 0 0" />
           <axis xyz="0 0 1" />
           <limit lower="-1.396" upper="0.7504" effort="0" velocity="2.97" />
     </joint>
-    <joint name="${prefix}left_joint_r" type="revolute">
+    <joint name="${prefix}left_joint_5_r" type="revolute">
           <parent link="${prefix}left_link_r" />
           <child link="${prefix}left_link_b" />
           <origin xyz="0.35997 0.05 0" rpy="0 0 0" />
           <axis xyz="-1 0 0" />
           <limit lower="-3.1415" upper="3.1415" effort="0" velocity="3.49" />
     </joint>
-    <joint name="${prefix}left_joint_b" type="revolute">
+    <joint name="${prefix}left_joint_6_b" type="revolute">
           <parent link="${prefix}left_link_b" />
           <child link="${prefix}left_link_t" />
           <origin xyz="0 0 0" rpy="0 0 0" />
           <axis xyz="0 0 1" />
           <limit lower="-1.9198" upper="1.9198" effort="0" velocity="3.49" />
     </joint>
-     <joint name="${prefix}left_joint_t" type="revolute">
+     <joint name="${prefix}left_joint_7_t" type="revolute">
           <parent link="${prefix}left_link_t" />
           <child link="${prefix}left_tool0" />
           <origin xyz="0.138 0 0" rpy="0 0 0" />
@@ -541,3 +541,4 @@
 		<!-- end of joint list -->
 	</xacro:macro>
 </robot>
+

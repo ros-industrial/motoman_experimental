@@ -1,15 +1,40 @@
 joint_limits:
-  left_joint_u:
+  left_joint_1_s:
     has_velocity_limits: true
     max_velocity: 2.97
     has_acceleration_limits: false
     max_acceleration: 0
-  left_joint_e:
+  right_joint_4_u:
     has_velocity_limits: true
     max_velocity: 2.97
     has_acceleration_limits: false
     max_acceleration: 0
-  right_joint_r:
+  right_joint_2_l:
+    has_velocity_limits: true
+    max_velocity: 2.62
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_joint_5_r:
+    has_velocity_limits: true
+    max_velocity: 3.49
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_joint_6_b:
+    has_velocity_limits: true
+    max_velocity: 3.49
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_joint_2_l:
+    has_velocity_limits: true
+    max_velocity: 2.62
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_joint_3_e:
+    has_velocity_limits: true
+    max_velocity: 2.97
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_joint_5_r:
     has_velocity_limits: true
     max_velocity: 3.49
     has_acceleration_limits: false
@@ -19,27 +44,22 @@ joint_limits:
     max_velocity: 2.27
     has_acceleration_limits: false
     max_acceleration: 0
-  right_joint_u:
+  left_joint_4_u:
     has_velocity_limits: true
     max_velocity: 2.97
     has_acceleration_limits: false
     max_acceleration: 0
-  left_joint_r:
+  left_joint_6_b:
     has_velocity_limits: true
     max_velocity: 3.49
     has_acceleration_limits: false
     max_acceleration: 0
-  right_joint_l:
+  left_joint_7_t:
     has_velocity_limits: true
-    max_velocity: 2.62
+    max_velocity: 6.11
     has_acceleration_limits: false
     max_acceleration: 0
-  right_joint_b:
-    has_velocity_limits: true
-    max_velocity: 3.49
-    has_acceleration_limits: false
-    max_acceleration: 0
-  right_joint_e:
+  right_joint_1_s:
     has_velocity_limits: true
     max_velocity: 2.97
     has_acceleration_limits: false
@@ -49,33 +69,13 @@ joint_limits:
     max_velocity: 2.27
     has_acceleration_limits: false
     max_acceleration: 0
-  left_joint_t:
-    has_velocity_limits: true
-    max_velocity: 6.11
-    has_acceleration_limits: false
-    max_acceleration: 0
-  left_joint_b:
-    has_velocity_limits: true
-    max_velocity: 3.49
-    has_acceleration_limits: false
-    max_acceleration: 0
-  right_joint_s:
+  right_joint_3_e:
     has_velocity_limits: true
     max_velocity: 2.97
     has_acceleration_limits: false
     max_acceleration: 0
-  left_joint_s:
-    has_velocity_limits: true
-    max_velocity: 2.97
-    has_acceleration_limits: false
-    max_acceleration: 0
-  right_joint_t:
+  right_joint_7_t:
     has_velocity_limits: true
     max_velocity: 6.11
-    has_acceleration_limits: false
-    max_acceleration: 0
-  left_joint_l:
-    has_velocity_limits: true
-    max_velocity: 2.62
     has_acceleration_limits: false
     max_acceleration: 0
