@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(bmda_roscon_demo)
+project(bmda3_roscon_demo)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
