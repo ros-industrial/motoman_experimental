@@ -89,8 +89,8 @@ class async_traj():
         ## This generates a subscriber to the current position for the first controller
         # group. Also the joint_trajectory_action now corresponds to the trajectory
         # control for this group point_indexividually.
-        msg_r1 = rospy.wait_for_message("/bmda3/bmda3_r1_controller/joint_states", JointState, 5.0)
-        bmda3_r1_client = actionlib.SimpleActionClient('/bmda3/bmda3_r1_controller/joint_trajectory_action', FollowJointTrajectoryAction)
+        msg_r1 = rospy.wait_for_message("/joint_states", JointState, 5.0)
+        bmda3_r1_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
         bmda3_r1_client.wait_for_server()
 
         # Creates the goal object to pass to the server
@@ -136,9 +136,9 @@ class async_traj():
         # Independent trajectory for the right arm
         #######################################
         
-        bmda3_r2_client = actionlib.SimpleActionClient('/bmda3/bmda3_r2_controller/joint_trajectory_action', FollowJointTrajectoryAction)
+        bmda3_r2_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
         bmda3_r2_client.wait_for_server()
-        msg_r2 = rospy.wait_for_message("/bmda3/bmda3_r2_controller/joint_states", JointState, 5.0)
+        msg_r2 = rospy.wait_for_message("/joint_states", JointState, 5.0)
         # Creates the goal object to pass to the server
         goal = control_msgs.msg.FollowJointTrajectoryGoal()
 
@@ -182,10 +182,10 @@ class async_traj():
         ###########################################   
         ## b1
         
-        msg_b1 = rospy.wait_for_message("/bmda3/bmda3_b1_controller/joint_states", JointState, 5.0)
-        msg_b2 = rospy.wait_for_message("/bmda3/bmda3_b2_controller/joint_states", JointState, 5.0)
+        msg_b1 = rospy.wait_for_message("/joint_states", JointState, 5.0)
+        msg_b2 = rospy.wait_for_message("/joint_states", JointState, 5.0)
         
-        bmda3_b1_client = actionlib.SimpleActionClient('/bmda3/bmda3_b1_controller/joint_trajectory_action', FollowJointTrajectoryAction)
+        bmda3_b1_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
         bmda3_b1_client.wait_for_server()
 
         # Creates the goal object to pass to the server
@@ -226,7 +226,7 @@ class async_traj():
         rospy.sleep(0.4)
 
         # B2
-        bmda3_b2_client = actionlib.SimpleActionClient('/bmda3/bmda3_b2_controller/joint_trajectory_action', FollowJointTrajectoryAction)
+        bmda3_b2_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
         bmda3_b2_client.wait_for_server()
 
         # Creates the goal object to pass to the server
