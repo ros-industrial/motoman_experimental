@@ -156,7 +156,7 @@ class synchronous_traj():
     # This is the actual goal position for the robot, in this case, the random
     # generated position
     point2.positions = left_arm + right_arm + torso
-    point2.positions =  [x/SCALE_MOTION for  x in  point2.positions]
+    point2.positions =  [x*SCALE_MOTION for  x in  point2.positions]
     point2.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     point2.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     point2.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
