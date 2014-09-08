@@ -1,0 +1,17 @@
+topic_list
+    - name: bmda3_r1_controller
+      ns: bmda3
+      group: 1
+      joints: ['left_joint_1_s','left_joint_2_l','left_joint_3_e','left_joint_4_u','left_joint_5_r','left_joint_6_b','left_joint_7_t']
+    - name: bmda3_r2_controller
+      ns: bmda3
+      group: 2
+      joints: ['right_joint_1_s','right_joint_2_l','right_joint_3_e','right_joint_4_u','right_joint_5_r','right_joint_6_b','right_joint_7_t']
+    - name: bmda3_b1_controller
+      ns: bmda3
+      group: 3
+      joints: ['torso_joint_b1']
+    - name: bmda3_b2_controller
+      ns: bmda3
+      group: 4
+      joints: ['torso_joint_b2']

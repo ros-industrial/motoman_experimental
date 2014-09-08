@@ -114,6 +114,7 @@ class synchronous_traj():
     point2 = trajectory_msgs.msg.JointTrajectoryPoint()
     goal.trajectory.points = [point1, point2]
     point1.positions = msg_r1.position+msg_r2.position + msg_b1.position + msg_b2.position
+		#point1.velocities = [1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0]
     point1.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     point1.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     point1.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]

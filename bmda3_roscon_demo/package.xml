@@ -2,18 +2,18 @@
 <package>
   <name>bmda3_roscon_demo</name>
   <version>0.0.0</version>
-  <description>The bmda_ROSCon_demo package</description>
+  <description>The bmda3_ROSCon_demo package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="ros-industrial-demo@todo.todo">ros-industrial-demo</maintainer>
+  <maintainer email="paul.hvass@swri.org">Paul Hvass</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->
   <!-- Commonly used license strings: -->
   <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
-  <license>TODO</license>
+  <license>Apache 2</license>
 
 
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->

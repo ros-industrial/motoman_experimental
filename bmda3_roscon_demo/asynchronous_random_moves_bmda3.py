@@ -110,9 +110,9 @@ class async_traj():
         goal.trajectory.points = [point1, point2]
         
         point1.positions = msg_r1.position
-        point1.velocities = [0.0,0.0,0.0,0.0,0.0,0.0]
-        point1.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0]
-        point1.effort = [0.0,0.0,0.0,0.0,0.0,0.0]
+        point1.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+        point1.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+        point1.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
         goal.trajectory.points[point_index] = point1
         goal.trajectory.points[point_index].time_from_start = rospy.Duration(0.0)
 
@@ -120,9 +120,9 @@ class async_traj():
         # Positions
         point_index += 1
         point2.positions = [self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value]
-        point2.velocities = [0.0,0.0,0.0,0.0,0.0,0.0]
-        point2.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0]
-        point2.effort = [0.0,0.0,0.0,0.0,0.0,0.0]
+        point2.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+        point2.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+        point2.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
         goal.trajectory.points[point_index] = point2
         goal.trajectory.points[point_index].time_from_start = rospy.Duration(2.0)
     
@@ -154,9 +154,9 @@ class async_traj():
         goal.trajectory.points = [point1, point2]
         
         point1.positions = msg_r2.position
-        point1.velocities = [0.0,0.0,0.0,0.0,0.0,0.0]
-        point1.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0]
-        point1.effort = [0.0,0.0,0.0,0.0,0.0,0.0]
+        point1.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+        point1.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+        point1.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
         goal.trajectory.points[point_index] = point1
         goal.trajectory.points[point_index].time_from_start = rospy.Duration(0.0)
 
@@ -164,9 +164,9 @@ class async_traj():
         # Positions
         point_index += 1
         point2.positions = [self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value]
-        point2.velocities = [0.0,0.0,0.0,0.0,0.0,0.0]
-        point2.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0]
-        point2.effort = [0.0,0.0,0.0,0.0,0.0,0.0]
+        point2.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+        point2.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+        point2.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
         goal.trajectory.points[point_index] = point2
         goal.trajectory.points[point_index].time_from_start = rospy.Duration(2.0)
     
