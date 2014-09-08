@@ -90,12 +90,130 @@ class synchronous_traj():
     
     self.alternate_value = random.uniform(-1.2, 1.2)
 
+    torso_center     = [0.0, 0.0]
+    start         = [-1.57, -1.06, 1.45, -0.8, 0.0, 0.0, 0.0]
+
+    front         = [0.70, 1.06, -0.61, 0.35, -0.55, 0.45, 0.0]
+    front_flip    = [0.70, 1.06, -0.61, 0.35, 2.59, -0.45, 0.0]
+
+
+    front2        = [0.20, 1.06, -0.15, 0.35, -0.15, 0.65, 0.0]
+    front_flip2   = [0.20, 1.06, -0.15, 0.35, 2.97, -0.65, 0.0]
+
+    #right_shoulder= [0.89, 1.19, -0.50, -1.00, 0.72, 0.00, 0.0]
+    right_shoulder= [0.86, 1.38, 0.06, -0.59, 1.06, -1.34, 0.0]
+    left_shoulder = [0.66, 1.25, -0.16, -0.45, 0.03, -0.90, 0.0]
+    behind_head   = [-1.39, 0.23, -0.55, -1.07, 0.24, 0.0, 0.0]
+    right_hip     = [-1.57, -0.92, 2.75, -0.76, 1.63, 0.53, -1.51]
+    left_hip      = [1.02, 0.97, -0.19, -0.61, 0.0, 0.0, 0.0]
+
+    pre_back      = [1.45, -1.0, 0.0, -1.35, 0.0, -0.2, 0.0]
+    back          = [0.22, -0.78, 2.26, -0.31, -0.41, -0.71, 2.31]
+
+    arm_back      = [3.12, 1.75, -1.87, -1.07, 0.51, -0.54, 0.00]
+    arm_up        = [0.76, 1.71, -1.06, -0.37, 0.00, 0.00, 0.00]
+    arm_side      = [1.73, 1.12, -1.61, -0.70, 0.34, 0.0, 0.0]
+    torso_left    = [0.50, 0.50]
+    torso_right   = [-0.50, -0.50]
+ 
+
+    home      = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    arm_bent  = [-1.36, -1.0, -0.2, -0.6, 0.0, 1.3, 0.0]
+    arm_front = [0.7, 0.3, -0.5, -0.5, 0.0, 0.5, -0.2]
+    arm_share = [0.0, 0.24, 0.0, -0.5, 0.0, -0.85, 0.0]
+
+
     # Getting the current joint_states for each robot group, the controller needs to be checked
     # TODO: Please, check if the torso is also in two controller(FS100) groups for the BMDA3
-    msg_r1 = rospy.wait_for_message("/bmda3/bmda3_r1_controller/joint_states", JointState, 5.0)
-    msg_r2 = rospy.wait_for_message("/bmda3/bmda3_r2_controller/joint_states", JointState, 5.0)
-    msg_b1 = rospy.wait_for_message("/bmda3/bmda3_b1_controller/joint_states", JointState, 5.0)
-    msg_b2 = rospy.wait_for_message("/bmda3/bmda3_b2_controller/joint_states", JointState, 5.0)
+    #msg_r1 = rospy.wait_for_message("/bmda3/bmda3_r1_controller/joint_states", JointState, 5.0)
+    #msg_r2 = rospy.wait_for_message("/bmda3/bmda3_r2_controller/joint_states", JointState, 5.0)
+    #msg_b1 = rospy.wait_for_message("/bmda3/bmda3_b1_controller/joint_states", JointState, 5.0)
+    #msg_b2 = rospy.wait_for_message("/bmda3/bmda3_b2_controller/joint_states", JointState, 5.0)
+    msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+
+    
+    if(0):
+      # iterate over several configurations
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, start, start, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, start, front, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, front, front, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, front, front_flip, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, front_flip, front_flip, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, front_flip, right_shoulder, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, left_shoulder, right_shoulder, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, behind_head, right_shoulder, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, behind_head, behind_head, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, behind_head, right_hip, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, left_hip, right_hip, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, pre_back, right_hip, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, back, right_hip, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, back, pre_back, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, back, back, torso_center)
+
+
+      # Return to start
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, pre_back, pre_back, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, start, start, torso_center)
+
+      rospy.sleep(4)
+
+    # Run script
+    # run1          = arm_back + arm_up + torso_left
+    # run2          = arm_up + arm_back + torso_right
+
+    for i in range(4):
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, arm_back, arm_up, torso_right)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, arm_side, arm_side, torso_center)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, arm_up, arm_back, torso_left)
+
+      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+      self.send_goal(msg_all.position, arm_side, arm_side, torso_center)
+
+    rospy.sleep(2)
+
+    msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+    self.send_goal(msg_all.position, start, start, torso_center)
+       
+
+  def send_goal(self, start, left_arm, right_arm, torso):
 
     #### This is the trajectory action client for synchronized movement for all groups
     bmda3_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
@@ -113,11 +231,11 @@ class synchronous_traj():
     point1 = trajectory_msgs.msg.JointTrajectoryPoint()
     point2 = trajectory_msgs.msg.JointTrajectoryPoint()
     goal.trajectory.points = [point1, point2]
-    point1.positions = msg_r1.position+msg_r2.position + msg_b1.position + msg_b2.position
-		#point1.velocities = [1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0]
-    point1.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-    point1.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-    point1.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    #point1.positions = msg_r1.position+msg_r2.position + msg_b1.position + msg_b2.position
+    point1.positions = start
+    point1.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    point1.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    point1.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     goal.trajectory.points[point_index] = point1
     goal.trajectory.points[point_index].time_from_start = rospy.Duration(0.0)
 
@@ -125,21 +243,21 @@ class synchronous_traj():
     point_index += 1
     # This is the actual goal position for the robot, in this case, the random
     # generated position
-    point2.positions = [self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value]
-    point2.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-    point2.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-    point2.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    point2.positions = left_arm + right_arm + torso
+    point2.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    point2.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    point2.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     goal.trajectory.points[point_index] = point2
     # TODO: the rospy.Duration(...) implies how faster the robot moves,
     # please check that for the BMDA3. The max for the SDA10F without controller
     # errors was rospy.Duration(0.5)
-    goal.trajectory.points[point_index].time_from_start = rospy.Duration(2.0)
+    goal.trajectory.points[point_index].time_from_start = rospy.Duration(1.0)
 
     goal.trajectory.header.stamp = rospy.Time.now()
 
-    bmda3_client.send_goal(goal)
+    bmda3_client.send_goal_and_wait(goal)
 
-    rospy.sleep(4.0)
+    #rospy.sleep(2.0)
 
 
 if __name__=='__main__':
