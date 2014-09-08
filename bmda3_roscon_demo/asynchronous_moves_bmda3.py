@@ -219,7 +219,7 @@ class synchronous_traj():
     elif len(left_arm) == 7:
         point2.positions = left_arm
 
-    point2.positions =  [x/SCALE_MOTION for  x in  point2.positions]
+    point2.positions =  [x*SCALE_MOTION for  x in  point2.positions]
     point2.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     point2.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     point2.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
