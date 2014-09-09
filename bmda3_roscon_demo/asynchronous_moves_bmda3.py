@@ -77,7 +77,7 @@ from std_msgs.msg import Int64
 import random
 
 # Scale down motion range, 1.0 is normal range, 2.0 cuts motion movement in half
-SCALE_MOTION = 1.0
+SCALE_MOTION = 0.1
 
 
 class synchronous_traj():
@@ -109,137 +109,146 @@ class synchronous_traj():
  
 
     # iterate over several configurations
-    positions = self.get_state()
-    self.send_goal(positions, start, [], torso_center)
+    
+    self.evaluate_goal(start, [], torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, [], start, torso_center)
+    
+    self.evaluate_goal([], start, torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, [], front, torso_center)
+    
+    self.evaluate_goal([], front, torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, front, [], torso_center)
+    
+    self.evaluate_goal(front, [], torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, [], front_flip, torso_center)
+    
+    self.evaluate_goal([], front_flip, torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, front_flip, [], torso_center)
+    
+    self.evaluate_goal(front_flip, [], torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, [], right_shoulder, torso_center)
+    
+    self.evaluate_goal([], right_shoulder, torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, left_shoulder, [], torso_center)
+    
+    self.evaluate_goal(left_shoulder, [], torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, behind_head, [], torso_center)
+    
+    self.evaluate_goal(behind_head, [], torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, [], behind_head, torso_center)
+    
+    self.evaluate_goal([], behind_head, torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, [], right_hip, torso_center)
+    
+    self.evaluate_goal([], right_hip, torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, left_hip, [], torso_center)
+    
+    self.evaluate_goal(left_hip, [], torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, pre_back, [], torso_center)
+    
+    self.evaluate_goal(pre_back, [], torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, back, [], torso_center)
+    
+    self.evaluate_goal(back, [], torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, [], pre_back, torso_center)
+    
+    self.evaluate_goal([], pre_back, torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, [], back, torso_center)
+    
+    self.evaluate_goal([], back, torso_center)
 
     # Return to start
-    positions = self.get_state()
-    self.send_goal(positions, [], pre_back, torso_center)
+    
+    self.evaluate_goal([], pre_back, torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, [], start, torso_center)
+    
+    self.evaluate_goal([], start, torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, pre_back, [], torso_center)
+    
+    self.evaluate_goal(pre_back, [], torso_center)
 
-    positions = self.get_state()
-    self.send_goal(positions, start, [], torso_center)
+    
+    self.evaluate_goal(start, [], torso_center)
 
     rospy.sleep(4)
 
        
 
-  def send_goal(self, start, left_arm, right_arm, torso):
+  def evaluate_goal(self, left_arm, right_arm, torso):
+  
+    if len(left_arm) == 7:
+      self.send_goal("r1", left_arm)
+    if len(right_arm)==7:
+      self.send_goal("r2", right_arm)
+    
+    self.send_goal("b1", torso[0])
+    
+    self.send_goal("b2", torso[1])
 
-    #### This is the trajectory action client for synchronized movement for all groups
-    bmda3_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
+  def send_goal(self,group, goal_positions):
+    ## This generates a subscriber to the current position for the first controller
+    # group. Also the joint_trajectory_action now corresponds to the trajectory
+    # control for this group point_indexividually.
+    msg = rospy.wait_for_message("/bmda3/bmda3_"+group+"_controller/joint_states", JointState, 5.0)
+    bmda3_client = actionlib.SimpleActionClient("/bmda3/bmda3_"+group+"_controller/joint_trajectory_action", FollowJointTrajectoryAction)
     bmda3_client.wait_for_server()
 
     # Creates the goal object to pass to the server
     goal = control_msgs.msg.FollowJointTrajectoryGoal()
 
+    #######################################
+    # Independent trajectory for the left arm
+    #######################################
     # Populates trajectory with joint names.
-    #goal.trajectory.joint_names = ['left_joint_1_s','left_joint_2_l','left_joint_3_e','left_joint_4_u', 'left_joint_5_r', 'left_joint_6_b', 'left_joint_7_t','right_joint_1_s','right_joint_2_l','right_joint_3_e','right_joint_4_u', 'right_joint_5_r', 'right_joint_6_b', 'right_joint_7_t','torso_joint_b1','torso_joint_b2']
-
-    if len(right_arm) == 7:
-        goal.trajectory.joint_names = ['right_joint_s_1','right_joint_2_l','right_joint_3_e','right_joint_4_u', 'right_joint_5_r', 'right_joint_6_b', 'right_joint_7_t']
-    elif len(left_arm) == 7:
-        goal.trajectory.joint_names = ['left_joint_1_s','left_joint_2_l','left_joint_3_e','left_joint_4_u', 'left_joint_5_r', 'left_joint_6_b', 'left_joint_7_t']
+    if group == "r1":
+      goal.trajectory.joint_names = ['left_joint_1_s','left_joint_2_l','left_joint_3_e','left_joint_4_u', 'left_joint_5_r', 'left_joint_6_b', 'left_joint_7_t']
+    elif group =="r2":
+      goal.trajectory.joint_names = ['right_joint_1_s','right_joint_2_l','right_joint_3_e','right_joint_4_u', 'right_joint_5_r', 'right_joint_6_b', 'right_joint_7_t']
+    elif group =="b1":
+      goal.trajectory.joint_names = ['torso_joint_b1']
+    elif group == "b2":
+      goal.trajectory.joint_names = ['torso_joint_b2']
     else:
-        return
+      return
 
-
-    # First trajectory point
+    # First trajectory point - this should always be the actual position
+    # Positions
     point_index = 0
-    # This should always be the current position,as required by the MOTOROS side
     point1 = trajectory_msgs.msg.JointTrajectoryPoint()
     point2 = trajectory_msgs.msg.JointTrajectoryPoint()
     goal.trajectory.points = [point1, point2]
-    #point1.positions = msg_r1.position+msg_r2.position + msg_b1.position + msg_b2.position
-    
-    point1.positions = start
-    point1.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-    point1.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-    point1.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+
+    point1.positions = msg.position
+    point1.velocities = [0.0]*len(goal.trajectory.joint_names)
+    point1.accelerations = [0.0]*len(goal.trajectory.joint_names)
+    point1.effort = [0.0]*len(goal.trajectory.joint_names)
     goal.trajectory.points[point_index] = point1
     goal.trajectory.points[point_index].time_from_start = rospy.Duration(0.0)
 
-    # Second trajectory point:
+    # Second trajectory point - the goal position
+    # Positions
     point_index += 1
-    # This is the actual goal position for the robot, in this case, the random
-    # generated position
-    #point2.positions = left_arm + right_arm + torso
-    if len(right_arm) == 7:
-        point2.positions = right_arm
-    elif len(left_arm) == 7:
-        point2.positions = left_arm
-
-    point2.positions =  [x*SCALE_MOTION for  x in  point2.positions]
-    point2.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-    point2.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-    point2.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    if group == "b1" or group=="b2":
+      point2.positions = [goal_positions]
+    else:
+      point2.positions = goal_positions
+    point2.positions = [x*SCALE_MOTION for x in point2.positions]
+    point2.velocities = [0.0]*len(goal.trajectory.joint_names)
+    point2.accelerations = [0.0]*len(goal.trajectory.joint_names)
+    point2.effort = [0.0]*len(goal.trajectory.joint_names)
     goal.trajectory.points[point_index] = point2
     # TODO: the rospy.Duration(...) implies how faster the robot moves,
     # please check that for the BMDA3. The max for the SDA10F without controller
     # errors was rospy.Duration(0.5)
     goal.trajectory.points[point_index].time_from_start = rospy.Duration(1.0)
-
     goal.trajectory.header.stamp = rospy.Time.now()
-
-    bmda3_client.send_goal_and_wait(goal)
-
-    #rospy.sleep(2.0)
-
-  def get_state(self):
-
-    msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-    return msg_all.position
-
+    
+    if group == "b1" or group=="b2":
+      bmda3_client.send_goal(goal)
+      rospy.sleep(0.4)
+    else:
+      bmda3_client.send_goal_and_wait(goal, rospy.Duration(4.0))
+      
 if __name__=='__main__':
   sync_traj = synchronous_traj()
   r = rospy.Rate(10)

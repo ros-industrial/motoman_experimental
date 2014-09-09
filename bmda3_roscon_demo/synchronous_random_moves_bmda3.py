@@ -129,64 +129,64 @@ class synchronous_traj():
     #msg_r2 = rospy.wait_for_message("/bmda3/bmda3_r2_controller/joint_states", JointState, 5.0)
     #msg_b1 = rospy.wait_for_message("/bmda3/bmda3_b1_controller/joint_states", JointState, 5.0)
     #msg_b2 = rospy.wait_for_message("/bmda3/bmda3_b2_controller/joint_states", JointState, 5.0)
-    msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
+    positions=self.get_state()
 
     
     if(0):
       # iterate over several configurations
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, start, start, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, start, start, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, start, front, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, start, front, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, front, front, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, front, front, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, front, front_flip, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, front, front_flip, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, front_flip, front_flip, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, front_flip, front_flip, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, front_flip, right_shoulder, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, front_flip, right_shoulder, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, left_shoulder, right_shoulder, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, left_shoulder, right_shoulder, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, behind_head, right_shoulder, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, behind_head, right_shoulder, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, behind_head, behind_head, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, behind_head, behind_head, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, behind_head, right_hip, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, behind_head, right_hip, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, left_hip, right_hip, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, left_hip, right_hip, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, pre_back, right_hip, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, pre_back, right_hip, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, back, right_hip, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, back, right_hip, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, back, pre_back, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, back, pre_back, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, back, back, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, back, back, torso_center)
 
 
       # Return to start
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, pre_back, pre_back, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, pre_back, pre_back, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, start, start, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, start, start, torso_center)
 
       rospy.sleep(4)
 
@@ -195,22 +195,22 @@ class synchronous_traj():
     # run2          = arm_up + arm_back + torso_right
 
     for i in range(4):
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, arm_back, arm_up, torso_right)
+      positions=self.get_state()
+      self.send_goal(positions, arm_back, arm_up, torso_right)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, arm_side, arm_side, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, arm_side, arm_side, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, arm_up, arm_back, torso_left)
+      positions=self.get_state()
+      self.send_goal(positions, arm_up, arm_back, torso_left)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, arm_side, arm_side, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, arm_side, arm_side, torso_center)
 
     rospy.sleep(2)
 
-    msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-    self.send_goal(msg_all.position, start, start, torso_center)
+    positions=self.get_state()
+    self.send_goal(positions, start, start, torso_center)
        
 
   def send_goal(self, start, left_arm, right_arm, torso):
@@ -258,6 +258,17 @@ class synchronous_traj():
     bmda3_client.send_goal_and_wait(goal)
 
     #rospy.sleep(2.0)
+    
+  def get_state(self):
+
+    msg_r1 = rospy.wait_for_message("/bmda3/bmda3_r1_controller/joint_states", JointState, 5.0)
+    msg_r2 = rospy.wait_for_message("/bmda3/bmda3_r2_controller/joint_states", JointState, 5.0)
+    msg_b1 = rospy.wait_for_message("/bmda3/bmda3_b1_controller/joint_states", JointState, 5.0)
+    msg_b2 = rospy.wait_for_message("/bmda3/bmda3_b2_controller/joint_states", JointState, 5.0)
+    current_pos = msg_r1.position+msg_r2.position + msg_b1.position + msg_b2.position
+    #positions=self.get_state()
+    #return positions
+    return current_pos
 
 
 if __name__=='__main__':

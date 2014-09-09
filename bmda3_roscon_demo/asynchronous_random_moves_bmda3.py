@@ -116,155 +116,24 @@ class async_traj():
         goal.trajectory.points[point_index] = point1
         goal.trajectory.points[point_index].time_from_start = rospy.Duration(0.0)
 
-        # Second trajectory point - the goal position
+
+
+        # Second trajectory point
         # Positions
         point_index += 1
-        point2.positions = [self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value]
+        point2.positions =  [x*SCALE_MOTION for  x in  point2.positions]
         point2.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
         point2.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
         point2.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
         goal.trajectory.points[point_index] = point2
-        goal.trajectory.points[point_index].time_from_start = rospy.Duration(2.0)
-    
+        # TODO: the rospy.Duration(...) implies how faster the robot moves,
+        # please check that for the BMDA3. The max for the SDA10F without controller
+        # errors was rospy.Duration(0.5)
+        goal.trajectory.points[point_index].time_from_start = rospy.Duration(1.0)
+
         goal.trajectory.header.stamp = rospy.Time.now()
-        
-        bmda3_r1_client.send_goal(goal)
-        
-        rospy.sleep(0.4)
-        
-        #######################################
-        # Independent trajectory for the right arm
-        #######################################
-        
-        bmda3_r2_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
-        bmda3_r2_client.wait_for_server()
-        msg_r2 = rospy.wait_for_message("/joint_states", JointState, 5.0)
-        # Creates the goal object to pass to the server
-        goal = control_msgs.msg.FollowJointTrajectoryGoal()
 
-        # Populates trajectory with joint names.
-        goal.trajectory.joint_names = ['right_joint_s_1','right_joint_2_l','right_joint_3_e','right_joint_4_u', 'right_joint_5_r', 'right_joint_6_b', 'right_joint_7_t']
-
-        # First trajectory point
-        # Positions
-        point_index = 0
-        #print goal.trajectory.points
-        point1 = trajectory_msgs.msg.JointTrajectoryPoint()
-        point2 = trajectory_msgs.msg.JointTrajectoryPoint()
-        goal.trajectory.points = [point1, point2]
-        
-        point1.positions = msg_r2.position
-        point1.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-        point1.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-        point1.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-        goal.trajectory.points[point_index] = point1
-        goal.trajectory.points[point_index].time_from_start = rospy.Duration(0.0)
-
-        # Second trajectory point
-        # Positions
-        point_index += 1
-        point2.positions = [self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value,self.alternate_value]
-        point2.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-        point2.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-        point2.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-        goal.trajectory.points[point_index] = point2
-        goal.trajectory.points[point_index].time_from_start = rospy.Duration(2.0)
-    
-        goal.trajectory.header.stamp = rospy.Time.now()
-        
-        bmda3_r2_client.send_goal(goal)
-        
-        rospy.sleep(0.4)
-        
-        ###########################################
-        # The following trajectories are for the both controller groups
-        # that are responsible for coordinating the torso movement
-        ###########################################   
-        ## b1
-        
-        msg_b1 = rospy.wait_for_message("/joint_states", JointState, 5.0)
-        msg_b2 = rospy.wait_for_message("/joint_states", JointState, 5.0)
-        
-        bmda3_b1_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
-        bmda3_b1_client.wait_for_server()
-
-        # Creates the goal object to pass to the server
-        goal = control_msgs.msg.FollowJointTrajectoryGoal()
-
-        # Populates trajectory with joint names.
-        goal.trajectory.joint_names = ['torso_joint_b1']
-
-        # First trajectory point
-        # Positions
-        point_index = 0
-        #print goal.trajectory.points
-        point1 = trajectory_msgs.msg.JointTrajectoryPoint()
-        point2 = trajectory_msgs.msg.JointTrajectoryPoint()
-        goal.trajectory.points = [point1, point2]
-
-        point1.positions = msg_b1.position
-        point1.velocities = [0.0]
-        point1.accelerations = [0.0]
-        point1.effort = [0.0]
-        goal.trajectory.points[point_index] = point1
-        goal.trajectory.points[point_index].time_from_start = rospy.Duration(0.0)
-
-        # Second trajectory point
-        # Positions
-        point_index += 1
-        point2.positions = [self.alternate_value]
-        point2.velocities = [0.0]
-        point2.accelerations = [0.0]
-        point2.effort = [0.0]
-        goal.trajectory.points[point_index] = point2
-        goal.trajectory.points[point_index].time_from_start = rospy.Duration(2.0)
-    
-        goal.trajectory.header.stamp = rospy.Time.now()
-        
-        bmda3_b1_client.send_goal(goal)
-        
-        rospy.sleep(0.4)
-
-        # B2
-        bmda3_b2_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
-        bmda3_b2_client.wait_for_server()
-
-        # Creates the goal object to pass to the server
-        goal = control_msgs.msg.FollowJointTrajectoryGoal()
-
-        # Populates trajectory with joint names.
-        goal.trajectory.joint_names = ['torso_joint_b2']
-
-        # First trajectory point
-        # Positions
-        point_index = 0
-        #print goal.trajectory.points
-        point1 = trajectory_msgs.msg.JointTrajectoryPoint()
-        point2 = trajectory_msgs.msg.JointTrajectoryPoint()
-        goal.trajectory.points = [point1, point2]
-
-        point1.positions = msg_b2.position
-        point1.velocities = [0.0]
-        point1.accelerations = [0.0]
-        point1.effort = [0.0]
-        goal.trajectory.points[point_index] = point1
-        goal.trajectory.points[point_index].time_from_start = rospy.Duration(0.0)
-
-        # Second trajectory point
-        # Positions
-        point_index += 1
-        point2.positions = [self.alternate_value]
-        point2.velocities = [0.0]
-        point2.accelerations = [0.0]
-        point2.effort = [0.0]
-        goal.trajectory.points[point_index] = point2
-        goal.trajectory.points[point_index].time_from_start = rospy.Duration(2.0)
-    
-        goal.trajectory.header.stamp = rospy.Time.now()
-        
-        bmda3_b2_client.send_goal(goal)
-        
-        rospy.sleep(2.0)
+        bmda3_client.send_goal_and_wait(goal)
 
 if __name__=='__main__':
     as_traj = async_traj()

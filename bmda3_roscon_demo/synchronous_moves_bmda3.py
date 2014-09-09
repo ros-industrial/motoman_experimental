@@ -77,7 +77,7 @@ from std_msgs.msg import Int64
 import random
 
 # Scale down motion range, 1.0 is normal range, 2.0 cuts motion movement in half
-SCALE_MOTION = 1.0
+SCALE_MOTION = 0.2
 
 class synchronous_traj():
   def __init__(self):
@@ -103,24 +103,24 @@ class synchronous_traj():
     torso_right   = [-0.50, -0.50]
  
 
-    msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-    self.send_goal(msg_all.position, arm_side, arm_side, torso_center)
+    positions=self.get_state()
+    self.send_goal(positions, arm_side, arm_side, torso_center)
 
     for i in range(4):
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, arm_back, arm_up, torso_right)
+      positions=self.get_state()
+      self.send_goal(positions, arm_back, arm_up, torso_right)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, arm_side, arm_side, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, arm_side, arm_side, torso_center)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, arm_up, arm_back, torso_left)
+      positions=self.get_state()
+      self.send_goal(positions, arm_up, arm_back, torso_left)
 
-      msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-      self.send_goal(msg_all.position, arm_side, arm_side, torso_center)
+      positions=self.get_state()
+      self.send_goal(positions, arm_side, arm_side, torso_center)
 
-    msg_all = rospy.wait_for_message("/joint_states", JointState, 5.0)
-    self.send_goal(msg_all.position, start, start, torso_center)
+    positions=self.get_state()
+    self.send_goal(positions, start, start, torso_center)
     
     rospy.sleep(2)
    
@@ -171,6 +171,17 @@ class synchronous_traj():
     bmda3_client.send_goal_and_wait(goal)
 
     #rospy.sleep(2.0)
+    
+  def get_state(self):
+
+    msg_r1 = rospy.wait_for_message("/bmda3/bmda3_r1_controller/joint_states", JointState, 5.0)
+    msg_r2 = rospy.wait_for_message("/bmda3/bmda3_r2_controller/joint_states", JointState, 5.0)
+    msg_b1 = rospy.wait_for_message("/bmda3/bmda3_b1_controller/joint_states", JointState, 5.0)
+    msg_b2 = rospy.wait_for_message("/bmda3/bmda3_b2_controller/joint_states", JointState, 5.0)
+    current_pos = msg_r1.position+msg_r2.position + msg_b1.position + msg_b2.position
+    #positions=self.get_state()
+    #return positions
+    return current_pos
 
 
 if __name__=='__main__':
