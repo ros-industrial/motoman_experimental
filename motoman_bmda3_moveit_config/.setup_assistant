@@ -1,8 +1,8 @@
 moveit_setup_assistant_config:
   URDF:
     package: motoman_bmda3_support
-    relative_path: urdf/bmda3_w_effs.urdf
+    relative_path: urdf/bmda3.urdf
   SRDF:
-    relative_path: config/motoman_bmda3_w_effs.srdf
+    relative_path: config/motoman_bmda3.srdf
   CONFIG:
-    generated_timestamp: 1409800758
+    generated_timestamp: 1410049284

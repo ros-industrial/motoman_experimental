@@ -6,10 +6,10 @@
   <arg name="robot_description" default="robot_description"/>
 
   <!-- Load universal robot description format (URDF) -->
-  <param if="$(arg load_robot_description)" name="$(arg robot_description)" textfile="$(find motoman_bmda3_support)/urdf/bmda3_w_effs.urdf"/>
+  <param if="$(arg load_robot_description)" name="$(arg robot_description)" textfile="$(find motoman_bmda3_support)/urdf/bmda3.urdf"/>
 
   <!-- The semantic description that corresponds to the URDF -->
-  <param name="$(arg robot_description)_semantic" textfile="$(find motoman_bmda3_moveit_config)/config/motoman_bmda3_w_effs.srdf" />
+  <param name="$(arg robot_description)_semantic" textfile="$(find motoman_bmda3_moveit_config)/config/motoman_bmda3.srdf" />
   
   <!-- Load updated joint limits (override information from URDF) -->
   <group ns="$(arg robot_description)_planning">
