@@ -85,7 +85,35 @@ class synchronous_traj():
     #initializing the ROS node
     rospy.init_node('synchronous_traj_action')
 
+    self.bmda3_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
     self.alternate_value = 0.0
+
+
+    self.traj = control_msgs.msg.FollowJointTrajectoryGoal()
+
+    # Creates the goal object to pass to the server
+    goal = control_msgs.msg.FollowJointTrajectoryGoal()
+
+    # Populates trajectory with joint names.
+    self.traj.trajectory.joint_names = ['left_joint_1_s','left_joint_2_l','left_joint_3_e','left_joint_4_u', 'left_joint_5_r', 'left_joint_6_b', 'left_joint_7_t','right_joint_1_s','right_joint_2_l','right_joint_3_e','right_joint_4_u', 'right_joint_5_r', 'right_joint_6_b', 'right_joint_7_t','torso_joint_b1','torso_joint_b2']
+
+    # First trajectory point
+    self.point_index = 0
+    # This should always be the current position,as required by the MOTOROS side
+    #point1 = trajectory_msgs.msg.JointTrajectoryPoint()
+
+    #start_position=self.get_state()
+    #point1.positions = msg_r1.position+msg_r2.position + msg_b1.position + msg_b2.position
+    #point1.positions = start_position
+    #point1.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    #point1.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    #point1.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+
+    #self.traj.points = [point1]
+
+    #self.traj.trajectory.points[point_index].time_from_start = rospy.Duration(0.0)
+
+
 
   def synchronous_traj_action(self):
     #Generating some "randomized" values for the robot movements, please
@@ -103,10 +131,12 @@ class synchronous_traj():
     torso_right   = [-0.50, -0.50]
  
 
-    positions=self.get_state()
-    self.send_goal(positions, arm_side, arm_side, torso_center)
+    #positions=self.get_state()
+    #self.send_goal(positions, arm_side, arm_side, torso_center)
 
-    for i in range(4):
+   
+
+    for i in range(1):
       positions=self.get_state()
       self.send_goal(positions, arm_back, arm_up, torso_right)
 
@@ -120,16 +150,34 @@ class synchronous_traj():
       self.send_goal(positions, arm_side, arm_side, torso_center)
 
     positions=self.get_state()
-    self.send_goal(positions, start, start, torso_center)
+    self.bmda3_client.send_goal_and_wait(positions, start, start, torso_center)
     
     rospy.sleep(2)
    
+  def append_goal(self, target_position):
+
+    # First trajectory point
+    self.point_index += 1
+    # This should always be the current position,as required by the MOTOROS side
+    point1 = trajectory_msgs.msg.JointTrajectoryPoint()
+
+    #point1.positions = msg_r1.position+msg_r2.position + msg_b1.position + msg_b2.position
+    point1.positions = target_position
+    point1.velocities = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    point1.accelerations = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    point1.effort = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    point1.time_from_start = rospy.Duration(self.point_index)
+
+
+    self.traj.points.append(goal)
 
   def send_goal(self, start, left_arm, right_arm, torso):
 
     #### This is the trajectory action client for synchronized movement for all groups
-    bmda3_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
-    bmda3_client.wait_for_server()
+    #bmda3_client = actionlib.SimpleActionClient('/joint_trajectory_action', FollowJointTrajectoryAction)
+    rospy.loginfo("Waiting for service")
+    self.bmda3_client.wait_for_server()
+    rospy.loginfo("DONE Waiting for service")
 
     # Creates the goal object to pass to the server
     goal = control_msgs.msg.FollowJointTrajectoryGoal()
@@ -168,20 +216,25 @@ class synchronous_traj():
 
     goal.trajectory.header.stamp = rospy.Time.now()
 
-    bmda3_client.send_goal_and_wait(goal)
+    rospy.loginfo("Sending Goal")
+    self.bmda3_client.send_goal_and_wait(goal)
+    #r = rospy.Rate(.25)
+    #r.sleep()
+    rospy.loginfo("Done sending goal")
 
     #rospy.sleep(2.0)
     
   def get_state(self):
-
-    msg_r1 = rospy.wait_for_message("/bmda3/bmda3_r1_controller/joint_states", JointState, 5.0)
-    msg_r2 = rospy.wait_for_message("/bmda3/bmda3_r2_controller/joint_states", JointState, 5.0)
-    msg_b1 = rospy.wait_for_message("/bmda3/bmda3_b1_controller/joint_states", JointState, 5.0)
-    msg_b2 = rospy.wait_for_message("/bmda3/bmda3_b2_controller/joint_states", JointState, 5.0)
+    rospy.loginfo("Get start state")
+    msg_r1 = rospy.wait_for_message("/bmda3/bmda3_r1_controller/joint_states", JointState, 2.0)
+    msg_r2 = rospy.wait_for_message("/bmda3/bmda3_r2_controller/joint_states", JointState, 2.0)
+    msg_b1 = rospy.wait_for_message("/bmda3/bmda3_b1_controller/joint_states", JointState, 2.0)
+    msg_b2 = rospy.wait_for_message("/bmda3/bmda3_b2_controller/joint_states", JointState, 2.0)
     current_pos = msg_r1.position+msg_r2.position + msg_b1.position + msg_b2.position
-    #positions=self.get_state()
-    #return positions
+    #current_pos = rospy.wait_for_message("/joint_states", JointState, 5.0)
+    rospy.loginfo("Get start state DONE")
     return current_pos
+    #return current_pos.position
 
 
 if __name__=='__main__':

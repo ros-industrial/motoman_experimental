@@ -181,9 +181,9 @@ class synchronous_traj():
     if len(right_arm)==7:
       self.send_goal("r2", right_arm)
     
-    self.send_goal("b1", torso[0])
+    #self.send_goal("b1", torso[0])
     
-    self.send_goal("b2", torso[1])
+    #self.send_goal("b2", torso[1])
 
   def send_goal(self,group, goal_positions):
     ## This generates a subscriber to the current position for the first controller
@@ -240,7 +240,7 @@ class synchronous_traj():
     # TODO: the rospy.Duration(...) implies how faster the robot moves,
     # please check that for the BMDA3. The max for the SDA10F without controller
     # errors was rospy.Duration(0.5)
-    goal.trajectory.points[point_index].time_from_start = rospy.Duration(1.0)
+    goal.trajectory.points[point_index].time_from_start = rospy.Duration(2.0)
     goal.trajectory.header.stamp = rospy.Time.now()
     
     if group == "b1" or group=="b2":
