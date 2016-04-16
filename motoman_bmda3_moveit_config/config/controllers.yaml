@@ -1,0 +1,22 @@
+controller_list:
+  - name: ""
+    action_ns: joint_trajectory_action
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - left_joint_1_s
+      - left_joint_2_l
+      - left_joint_3_e
+      - left_joint_4_u
+      - left_joint_5_r
+      - left_joint_6_b
+      - left_joint_7_t
+      - right_joint_1_s
+      - right_joint_2_l
+      - right_joint_3_e
+      - right_joint_4_u
+      - right_joint_5_r
+      - right_joint_6_b
+      - right_joint_7_t
+      - torso_joint_b1
+      - torso_joint_b2
