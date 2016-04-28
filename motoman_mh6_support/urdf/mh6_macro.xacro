@@ -139,8 +139,9 @@
 			<child link="${prefix}link_u"/>
 			<origin xyz="0 0 0.614" />
 			<axis xyz="0 -1 0" />
-			<!-- These limits are from the datasheet, but they always cause self collisions. -->
-			<limit lower="${-175 * pi / 180}" upper="${250 * pi / 180}" effort="100" velocity="${220 * pi / 180}" />
+			<!-- These limits are smaller than the datasheet, but the datasheet limits are in collision. -->
+			<!-- Datasheet says [-175, 250] degrees. -->
+			<limit lower="${-90 * pi / 180}" upper="${pi}" effort="100" velocity="${220 * pi / 180}" />
 		</joint>
 
 		<joint name="${prefix}joint_r" type="revolute">

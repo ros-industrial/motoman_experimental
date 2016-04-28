@@ -130,8 +130,9 @@
     <child link="link_u"/>
     <origin xyz="0 0 0.614"/>
     <axis xyz="0 -1 0"/>
-    <!-- These limits are from the datasheet, but they always cause self collisions. -->
-    <limit effort="100" lower="-3.05432619099" upper="4.36332312999" velocity="3.83972435439"/>
+    <!-- These limits are smaller than the datasheet, but the datasheet limits are in collision. -->
+    <!-- Datasheet says [-175, 250] degrees. -->
+    <limit effort="100" lower="-1.57079632679" upper="3.14159265359" velocity="3.83972435439"/>
   </joint>
   <joint name="joint_r" type="revolute">
     <parent link="link_u"/>
@@ -156,3 +157,4 @@
   </joint>
   <!-- end of joint list -->
 </robot>
+

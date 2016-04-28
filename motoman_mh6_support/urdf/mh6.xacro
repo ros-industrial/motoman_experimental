@@ -4,5 +4,3 @@
 	<xacro:include filename="$(find motoman_mh6_support)/urdf/mh6_macro.xacro" />
 	<xacro:motoman_mh6 prefix=""/>
 </robot>
-
-
