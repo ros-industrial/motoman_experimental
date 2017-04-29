@@ -24,7 +24,7 @@
     </p>
   </description>
   <author email="michael.ripperger@swri.org">Michael Ripperger</author>
-  <maintainer email="michael.ripperger@swri.org">Michael Ripperger</maintainer>
+  <maintainer email="shaun.edwards@gmail.com">Shaun Edwards</maintainer>
   <license>Apache 2.0</license>
 
   <url type="website">http://ros.org/wiki/motoman_es165rdii_support</url>
