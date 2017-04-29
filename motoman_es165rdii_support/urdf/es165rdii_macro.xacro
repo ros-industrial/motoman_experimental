@@ -142,7 +142,7 @@
                 <geometry>
                     <mesh filename="package://motoman_es165rdii_support/meshes/es165rdii/visual/balancer_rod.stl"/>
                 </geometry>
-                <material name="${prefix}black">
+                <material name="${prefix}blue">
                     <color rgba="1 1 1 1"/>
                 </material>
             </visual>
@@ -151,7 +151,7 @@
                 <geometry>
                     <mesh filename="package://motoman_es165rdii_support/meshes/es165rdii/collision/balancer_rod.stl"/>
                 </geometry>
-                <material name="${prefix}black"/>
+                <material name="${prefix}yellow"/>
             </collision>
         </link>
         <!-- end of link list -->
