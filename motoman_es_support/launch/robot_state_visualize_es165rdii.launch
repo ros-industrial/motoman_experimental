@@ -8,7 +8,7 @@
   <arg name="robot_ip" />
   <arg name="controller"/>
 
-  <rosparam command="load" file="$(find motoman_es165rdii_support)/config/joint_names_es165rdii.yaml" />
+  <rosparam command="load" file="$(find motoman_es_support)/config/joint_names_es165rdii.yaml" />
 
   <include file="$(find motoman_driver)/launch/robot_interface_streaming_$(arg controller).launch">
     <arg name="robot_ip"    value="$(arg robot_ip)" />
@@ -16,7 +16,7 @@
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-  <include file="$(find motoman_es165rdii_support)/launch/load_es165rdii.launch" />
+  <include file="$(find motoman_es_support)/launch/load_es165rdii.launch" />
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find industrial_robot_client)/config/robot_state_visualize.rviz" required="true" />
 </launch>

@@ -1,3 +1,0 @@
-<launch>
-  <param name="robot_description" command="$(find xacro)/xacro.py --inorder '$(find motoman_es165rdii_support)/urdf/es165rdii.xacro'" />
-</launch>

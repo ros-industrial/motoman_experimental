@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 
-project(motoman_es165rdii_support)
+project(motoman_es_support)
 
 find_package(catkin REQUIRED)
 
