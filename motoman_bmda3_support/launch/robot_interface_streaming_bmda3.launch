@@ -5,14 +5,17 @@
    - 6 joints
 
   Usage:
-    robot_interface_streaming_bmda3.launch robot_ip:=<value>
+    robot_interface_streaming_bmda3.launch robot_ip:=<value> controller:=<fs100|dx100>
 -->
 <launch>
   <arg name="robot_ip" />
 
+  <!-- controller: Controller name (fs100 or dx100) -->
+  <arg name="controller" />
+
   <rosparam command="load" file="$(find motoman_bmda3_support)/config/joint_names_bmda3.yaml" />
 
-  <include file="$(find motoman_driver)/launch/robot_interface_streaming.launch">
-    <arg name="robot_ip"   value="$(arg robot_ip)" />
+  <include file="$(find motoman_driver)/launch/robot_interface_streaming_$(arg controller).launch">
+    <arg name="robot_ip" value="$(arg robot_ip)" />
   </include>
 </launch>
