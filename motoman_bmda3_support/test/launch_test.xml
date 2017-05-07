@@ -27,6 +27,7 @@
 -->
 <launch>
   <arg name="req_arg" value="default"/>
+  <arg name="controller" value="fs100"/>
 
   <group ns="load_bmda3">
     <include file="$(find motoman_bmda3_support)/launch/load_bmda3.launch"/>
@@ -40,12 +41,14 @@
   <group ns="robot_interface_streaming_bmda3">
     <include file="$(find motoman_bmda3_support)/launch/robot_interface_streaming_bmda3.launch">
       <arg name="robot_ip" value="$(arg req_arg)" />
+      <arg name="controller" value="$(arg controller)" />
     </include>
   </group>
 
   <group ns="robot_state_visualize_bmda3">
     <include file="$(find motoman_bmda3_support)/launch/robot_state_visualize_bmda3.launch">
       <arg name="robot_ip" value="$(arg req_arg)" />
+      <arg name="controller" value="$(arg controller)" />
     </include>
   </group>
 
