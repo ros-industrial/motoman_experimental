@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="motoman_es165rdii" params="prefix">
+  <xacro:macro name="motoman_es200rn_120" params="prefix">
     <!-- link list -->
     <link name="${prefix}base_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-          <geometry>
-            <mesh filename="package://motoman_es_support/meshes/es/visual/base_link.stl"/>
-          </geometry>
-          <material name="blue">
-            <color rgba="0 0 1 1"/>
-          </material>
+        <geometry>
+          <mesh filename="package://motoman_es_support/meshes/es/visual/base_link.stl"/>
+        </geometry>
+        <material name="blue">
+          <color rgba="0 0 1 1"/>
+        </material>
       </visual>
       <collision>
         <geometry>
@@ -57,14 +57,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://motoman_es_support/meshes/es165rdii/visual/link_u.stl"/>
+          <mesh filename="package://motoman_es_support/meshes/es200rn_120/visual/link_u.stl"/>
         </geometry>
         <material name="blue"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://motoman_es_support/meshes/es165rdii/collision/link_u.stl"/>
+          <mesh filename="package://motoman_es_support/meshes/es200rn_120/collision/link_u.stl"/>
         </geometry>
         <material name="yellow"/>
       </collision>
@@ -72,15 +72,15 @@
     <link name="${prefix}link_r">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://motoman_es_support/meshes/es165rdii/visual/link_r.stl"/>
-      </geometry>
-      <material name="blue"/>
+        <geometry>
+          <mesh filename="package://motoman_es_support/meshes/es200rn_120/visual/link_r.stl"/>
+        </geometry>
+        <material name="blue"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://motoman_es_support/meshes/es165rdii/collision/link_r.stl"/>
+          <mesh filename="package://motoman_es_support/meshes/es200rn_120/collision/link_r.stl"/>
         </geometry>
         <material name="yellow"/>
       </collision>
@@ -104,12 +104,12 @@
     <link name="${prefix}link_t">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-          <geometry>
-            <mesh filename="package://motoman_es_support/meshes/es/visual/link_t.stl"/>
-          </geometry>
-          <material name="black">
-            <color rgba="0 0 0 1"/>
-          </material>
+        <geometry>
+          <mesh filename="package://motoman_es_support/meshes/es/visual/link_t.stl"/>
+        </geometry>
+        <material name="black">
+          <color rgba="0 0 0 1"/>
+        </material>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -142,9 +142,7 @@
         <geometry>
           <mesh filename="package://motoman_es_support/meshes/es/visual/balancer_rod.stl"/>
         </geometry>
-        <material name="blue">
-          <color rgba="1 1 1 1"/>
-        </material>
+        <material name="blue"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -155,52 +153,51 @@
       </collision>
     </link>
     <!-- end of link list -->
-
     <!-- joint list -->
     <joint name="${prefix}joint_1" type="revolute">
       <origin xyz="0 0 0.450" rpy="0 0 0"/>
       <parent link="${prefix}base_link"/>
       <child link="${prefix}link_s"/>
       <axis xyz="0 0 1"/>
-      <limit lower="${-radians(180)}" upper="${radians(180)}" effort="0" velocity="${radians(105)}"/>
+      <limit lower="${radians(-180)}" upper="${radians(180)}" effort="0" velocity="${radians(90)}"/>
     </joint>
     <joint name="${prefix}joint_2" type="revolute">
       <origin xyz="0.740 0 0" rpy="0 0 0"/>
       <parent link="${prefix}link_s"/>
       <child link="${prefix}link_l"/>
       <axis xyz="0 1 0"/>
-      <limit lower="${-radians(130)}" upper="${radians(80)}" effort="0" velocity="${radians(105)}"/>
+      <limit lower="${radians(-130)}" upper="${radians(80)}" effort="0" velocity="${radians(85)}"/>
     </joint>
     <joint name="${prefix}joint_3" type="revolute">
       <origin xyz="1.150 0 0" rpy="0 0 0"/>
       <parent link="${prefix}link_l"/>
       <child link="${prefix}link_u"/>
       <axis xyz="0 1 0"/>
-      <limit lower="${-radians(180)}" upper="${radians(79.4)}" effort="0" velocity="${radians(105)}"/>
+      <limit lower="${radians(-180)}" upper="${radians(79.4)}" effort="0" velocity="${radians(85)}"/>
     </joint>
     <joint name="${prefix}joint_4" type="revolute">
       <origin xyz="0.250 0 0" rpy="0 0 0"/>
       <parent link="${prefix}link_u"/>
       <child link="${prefix}link_r"/>
       <axis xyz="0 0 -1"/>
-      <limit lower="${-radians(360)}" upper="${radians(360)}" effort="0" velocity="${radians(175)}"/>
+      <limit lower="${radians(-360)}" upper="${radians(360)}" effort="0" velocity="${radians(175)}"/>
     </joint>
     <joint name="${prefix}joint_5" type="revolute">
-      <origin xyz="0 0 -1.225" rpy="0 0 0"/>
+      <origin xyz="0 0 -2.100" rpy="0 0 0"/>
       <parent link="${prefix}link_r"/>
       <child link="${prefix}link_b"/>
       <axis xyz="0 1 0"/>
-      <limit lower="${-radians(130)}" upper="${radians(130)}" effort="0" velocity="${radians(150)}"/>
+      <limit lower="${radians(-130)}" upper="${radians(130)}" effort="0" velocity="${radians(145)}"/>
     </joint>
     <joint name="${prefix}joint_6" type="revolute">
       <origin xyz="0 0 -0.225" rpy="0 0 0"/>
       <parent link="${prefix}link_b"/>
       <child link="${prefix}link_t"/>
       <axis xyz="0 0 -1"/>
-      <limit lower="${-radians(360)}" upper="${radians(360)}" effort="0" velocity="${radians(240)}"/>
+      <limit lower="${radians(-360)}" upper="${radians(360)}" effort="0" velocity="${radians(240)}"/>
     </joint>
     <joint name="${prefix}joint_6-tool0" type="fixed">
-      <origin xyz="0 0 0" rpy="0 ${pi} 0"/>
+      <origin xyz="0 0 0" rpy="0 ${radians(180)} 0"/>
       <parent link="${prefix}link_t"/>
       <child link="${prefix}tool0"/>
     </joint>
@@ -215,9 +212,8 @@
       <child link="${prefix}balancer_rod"/>
     </joint>
     <!-- end of joint list -->
-
     <!-- ROS base_link to Robot Manufacturer World Coordinates transform -->
-    <link name="${prefix}base" />
+    <link name="${prefix}base"/>
     <joint name="${prefix}base_link-base" type="fixed">
       <origin xyz="0 0 0.450" rpy="0 0 0"/>
       <parent link="${prefix}base_link"/>
