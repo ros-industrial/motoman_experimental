@@ -1,0 +1,120 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+   <xacro:property name="dist_motor_to_center_"  value="0.160" /> 
+   <xacro:property name="upper_arm_len_"         value="0.360" /> 
+   <xacro:property name="lower_arm_len_"         value="0.960" /> 
+   <xacro:property name="dist_armfixt_to_tool_"  value="0.070" /> 
+   <xacro:property name="dist_lower_arm_links_"  value="0.050" /> 
+   <xacro:property name="PI" value="3.1415926535897931"/>
+
+
+   <xacro:include filename="$(find motoman_mpp3h_support)/urdf/mpp3h_leg_macro.xacro"/>
+
+   <xacro:macro name="motoman_mpp3h" params="prefix">
+
+    <!-- Base Link -->
+    <link name="${prefix}base_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/base_link.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="0.5 0.5 0.5 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/base_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+
+    <!-- The three MPP3H arms -->
+    <!--  90deg -->
+    <xacro:motoman_mpp3h_leg num="s" x="${dist_motor_to_center_}"      y= "0.0" r="1.5708"/>
+    <!-- 210deg -->
+    <xacro:motoman_mpp3h_leg num="l" x="${dist_motor_to_center_*-0.5}" y="${-dist_motor_to_center_*0.86603}" r="-0.52360" />
+    <!-- -30deg -->
+    <xacro:motoman_mpp3h_leg num="u" x="${dist_motor_to_center_*-0.5}" y="${-dist_motor_to_center_*-0.86603}" r= "3.66519" />
+
+
+    <!-- End Effector Link -->
+    <link name="${prefix}ee_upper_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/ee_link_upper.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="1 0 0 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/ee_link_upper.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${prefix}ee_upper_joint" type="floating">
+      <origin xyz="0 0 -0.847819" rpy="0 0 0.523599" />
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}ee_upper_link" />
+    </joint>
+
+    <link name="${prefix}ee_lower_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/ee_link_lower.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="1 0 0 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/ee_link_lower.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${prefix}joint_t" type="revolute">
+      <axis xyz="0 0 1"/>
+      <limit effort="1000.0" lower="${-PI}" upper="${PI}" velocity="24.0"/>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${prefix}ee_upper_link" />
+      <child link="${prefix}ee_lower_link" />
+    </joint>
+
+    <!-- Tool0 for compliance with ROS-I protocols -->
+    <link name="${prefix}tool0"/>
+    <joint name="${prefix}ee_lower_to_tool0" type="fixed">
+      <parent link="${prefix}ee_lower_link"/>
+      <child link="${prefix}tool0"/>
+    </joint>
+
+    <!-- Joints r and b for compliance with motoman_driver -->
+    <link name="${prefix}link_r_fake"/>
+    <joint name="${prefix}joint_r" type="revolute">
+      <axis xyz="0 0 1"/>
+      <limit effort="0" lower="0" upper="0" velocity="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_r_fake"/>
+    </joint>
+    <link name="${prefix}link_b_fake"/>
+    <joint name="${prefix}joint_b" type="revolute">
+      <axis xyz="0 0 1"/>
+      <limit effort="0" lower="0" upper="0" velocity="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_b_fake"/>
+    </joint>
+
+  </xacro:macro>
+</robot>

@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<robot name="motoman_mpp3h" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="prefix_def" value=""/> <!-- Required, because "default" cannot evaluate empty string -->
+  <xacro:arg name="prefix" default="${prefix_def}"/>
+  <xacro:include filename="$(find motoman_mpp3h_support)/urdf/mpp3h_macro.xacro"/>
+  <xacro:motoman_mpp3h prefix="$(arg prefix)"/>
+</robot>

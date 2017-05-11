@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="motoman_mpp3h_leg" params="num x y r"> 
+    
+    <link name="${prefix}link_${num}">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/upper_arm.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="0 0.6 0 1" />
+        </material>
+        </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/upper_arm.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${prefix}joint_${num}" type="revolute">
+      <axis xyz="0 0 1"/>
+      <limit effort="1000.0" lower="-0.75" upper="0.7" velocity="15.0"/>
+      <origin xyz="${x} ${y} 0.0" rpy="${r} ${-PI/2} ${PI}" />
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}link_${num}" />
+    </joint>
+
+
+    <link name="${prefix}link_${num}_lower_left">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/lower_arm_a.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="0.2 0.2 0.2 1" />
+        </material>
+      </visual>   
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/lower_arm_a.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${prefix}joint_${num}_lower_left" type="floating">
+      <origin xyz="0 ${upper_arm_len_} ${-dist_lower_arm_links_}" 
+              rpy="${-PI} 0 -1.082136" />
+      <parent link="${prefix}link_${num}" />
+      <child link="${prefix}link_${num}_lower_left" />
+    </joint>
+
+
+    <link name="${prefix}link_${num}_lower_right">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/lower_arm_b.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="0.2 0.2 0.2 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://motoman_mpp3h_support/meshes/lower_arm_b.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${prefix}joint_${num}_lower_right" type="floating">
+      <origin xyz="0 ${upper_arm_len_} ${dist_lower_arm_links_}" 
+              rpy="${-PI} 0 -1.082136" />
+      <parent link="${prefix}link_${num}" />
+      <child link="${prefix}link_${num}_lower_right" />
+    </joint>
+
+
+    </xacro:macro>
+</robot>
