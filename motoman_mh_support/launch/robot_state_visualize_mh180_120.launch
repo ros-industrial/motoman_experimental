@@ -1,7 +1,8 @@
+<?xml version="1.0" ?>
 <!--
   Manipulator specific version of the state visualizer.
 
-  Defaults provided for mh_180_120:
+  Defaults provided for MH180-120:
    - 6 joints
 
   Usage:
