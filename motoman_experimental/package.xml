@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <name>motoman_experimental</name>
+  <version>0.1.0</version>
+  <description>Experimental packages for Motoman manipulators within ROS-Industrial.</description>
+  <author>Shaun Edwards</author>
+  <maintainer email="sedwards@swri.org">Shaun Edwards</maintainer>
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/motoman_experimental</url>
+  <url type="bugtracker">https://github.com/ros-industrial/motoman_experimental/issues</url>
+  <url type="repository">https://github.com/ros-industrial/motoman_experimental</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>motoman_bmda3_support</run_depend>
+  <run_depend>motoman_mh_support</run_depend>
+  <run_depend>motoman_mpl80_moveit_config</run_depend>
+  <run_depend>motoman_mpl_support</run_depend>
+  <run_depend>motoman_robot_pkg_gen</run_depend>
+  <run_depend>motoman_sia5d_moveit_config</run_depend>
+
+  <export>
+    <architecture_independent/>
+    <metapackage/>
+  </export>
+</package>
