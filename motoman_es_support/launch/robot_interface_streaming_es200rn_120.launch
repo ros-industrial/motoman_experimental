@@ -1,11 +1,9 @@
+<?xml version="1.0" ?>
 <!--
   Manipulator specific version of motoman driver's 'robot_interface.launch'.
 
-  Defaults provided for es200rn_120:
-   - J23_coupled = true
-
   Usage:
-    robot_interface_download_es200rn_120.launch robot_ip:=<value>
+    robot_interface_download_es200rn_120.launch robot_ip:=<value> controller:=<value>
 -->
 <launch>
   <arg name="robot_ip" />
@@ -15,5 +13,6 @@
 
   <include file="$(find motoman_driver)/launch/robot_interface_streaming_$(arg controller).launch">
     <arg name="robot_ip" value="$(arg robot_ip)" />
+    <arg name="controller" value="$(arg controller)"/>
   </include>
 </launch>

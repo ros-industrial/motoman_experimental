@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <launch>
   <include file="$(find motoman_es_support)/launch/load_es200rn_120.launch" />
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
