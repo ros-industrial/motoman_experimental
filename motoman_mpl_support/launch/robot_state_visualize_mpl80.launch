@@ -2,7 +2,7 @@
 <!--
   Manipulator specific version of the state visualizer.
 
-  Defaults provided for mpl80:
+  Defaults provided for MPL80:
    - 5 joints
 
   Usage:
