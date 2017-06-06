@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<package>
+  <name>motoman_mpl80_moveit_config</name>
+  <version>0.1.0</version>
+  <description>
+    <p>
+      MoveIt package for the Motoman MPL80.
+    </p>
+    <p>
+      An automatically generated package with all the configuration and launch
+      files for using the Motoman MPL80 with the MoveIt Motion Planning
+      Framework.
+    </p>
+  </description>
+  <author email="eric.marcil@motoman.com">Eric Marcil</author>
+  <maintainer email="eric.marcil@motoman.com">Eric Marcil</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/motoman_mpl80_moveit_config</url>
+  <url type="bugtracker">https://github.com/ros-industrial/motoman_experimental/issues</url>
+  <url type="repository">https://github.com/ros-industrial/motoman_experimental</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>industrial_robot_simulator</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>motoman_mpl_support</run_depend>
+  <run_depend>moveit_fake_controller_manager</run_depend>
+  <run_depend>moveit_planners_ompl</run_depend>
+  <run_depend>moveit_ros_move_group</run_depend>
+  <run_depend>moveit_ros_visualization</run_depend>
+  <run_depend>moveit_ros_warehouse</run_depend>
+  <run_depend>moveit_simple_controller_manager</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>rviz</run_depend>
+  <!-- This package is referenced in the warehouse launch files, but does not build out of the box at the moment. Commented the dependency until this works. -->
+  <!-- <run_depend>warehouse_ros_mongo</run_depend> -->
+  <run_depend>xacro</run_depend>
+
+  <export>
+    <architecture_independent />
+  </export>
+</package>

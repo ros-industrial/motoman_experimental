@@ -1,0 +1,8 @@
+- git:
+    uri: https://github.com/ros-industrial/motoman.git
+    local-name: ros-industrial/motoman
+    version: kinetic-devel
+- git:
+    uri: https://github.com/ros-industrial/industrial_experimental.git
+    local-name: ros-industrial/industrial_experimental
+    version: indigo-devel
