@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<!--
+  Manipulator specific version of motoman driver's 'robot_interface_streaming.launch'.
+
+  Defaults provided for EPX1250:
+   - 6 joints
+
+  Usage:
+    robot_state_visualize_epx1250.launch robot_ip:=<value> controller:=<fs100|dx100>
+-->
+
+<launch>
+  <arg name="robot_ip" />
+  <arg name="controller" />
+
+  <rosparam command="load" file="$(find motoman_epx_support)/config/joint_names_epx1250.yaml" />
+
+  <include file="$(find motoman_driver)/launch/robot_interface_streaming_$(arg controller).launch">
+    <arg name="robot_ip" value="$(arg robot_ip)" />
+  </include>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <include file="$(find motoman_epx_support)/launch/load_epx1250.launch" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find industrial_robot_client)/config/robot_state_visualize.rviz" required="true" />
+</launch>

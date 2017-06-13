@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<robot name="motoman_epx1250" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find motoman_epx_support)/urdf/epx1250_macro.xacro"/>
+  <xacro:motoman_epx1250 prefix=""/>
+</robot>
