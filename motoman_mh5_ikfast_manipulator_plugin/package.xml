@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='ASCII'?>
+<package>
+  <name>motoman_mh5_ikfast_manipulator_plugin</name>
+  <version>0.0.0</version>
+  <description>The motoman_mh5_ikfast_manipulator_plugin package</description>
+  <maintainer email="nitish.sharma@plusonerobotics.com">nitishsharma</maintainer>
+  <license>Apache 2.0</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+    <moveit_core plugin="${prefix}/motoman_mh5_manipulator_moveit_ikfast_plugin_description.xml"/>
+  </export>
+  <build_depend>moveit_core</build_depend>
+  <build_depend>liblapack-dev</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>tf_conversions</build_depend>
+  <build_depend>pluginlib</build_depend>
+  <run_depend>moveit_core</run_depend>
+  <run_depend>liblapack-dev</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>tf_conversions</run_depend>
+  <run_depend>pluginlib</run_depend>
+</package>
