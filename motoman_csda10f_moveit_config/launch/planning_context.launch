@@ -6,10 +6,10 @@
   <arg name="robot_description" default="robot_description"/>
 
   <!-- Load universal robot description format (URDF) -->
-  <param if="$(arg load_robot_description)" name="$(arg robot_description)" command="$(find xacro)/xacro.py '$(find motoman_csda10f_support)/urdf/csda10f_macro.xacro'"/>
+  <param if="$(arg load_robot_description)" name="$(arg robot_description)" command="$(find xacro)/xacro --inorder '$(find motoman_csda10f_support)/urdf/csda10f.xacro'"/>
 
   <!-- The semantic description that corresponds to the URDF -->
-  <param name="$(arg robot_description)_semantic" textfile="$(find motoman_csda10f_moveit_config)/config/csda10f.srdf" />
+  <param name="$(arg robot_description)_semantic" textfile="$(find motoman_csda10f_moveit_config)/config/motoman_csda10f.srdf" />
   
   <!-- Load updated joint limits (override information from URDF) -->
   <group ns="$(arg robot_description)_planning">
