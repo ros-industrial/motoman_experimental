@@ -19,7 +19,6 @@
   <p>
       Joint limits and maximum joint velocities are based on the information 
       found in the online 
-      https://www.yaskawa.eu.com/en/products/robotic/motoman-robots/productdetail/product/csda10f-1/
       All urdfs are based on the default motion and joint velocity limits, 
       unless noted otherwise.
     </p>
