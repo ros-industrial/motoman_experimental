@@ -30,7 +30,6 @@
   <!--   - this typically includes: robot_state, motion_interface, and joint_trajectory_action nodes -->
   <!--   - replace these calls with appropriate robot-specific calls or launch files -->
   <group unless="$(arg sim)">
-    <node pkg="rosservice" type="rosservice" name="robot_enable" args="call --wait /robot_enable"/>
     <include file="$(find motoman_sia5d_support)/launch/robot_interface_streaming_sia5d.launch" >
       <arg name="robot_ip" value="$(arg robot_ip)"/>
       <arg name="controller" value="$(arg controller)"/>
