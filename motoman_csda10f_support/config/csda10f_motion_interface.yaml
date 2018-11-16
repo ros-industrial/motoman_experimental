@@ -1,4 +1,4 @@
-# Ordering from 0 to 4 is required due to real controller configuration (might dverge from controller configurations).
+# Ordering from 0 to 4 is required due to FS100 controller configuration, but it can be that ordering starting from 1 works for you.
 topic_list:
     - name: csda10f_r1_controller
       ns: csda10f
@@ -16,5 +16,3 @@ topic_list:
       ns: csda10f
       group: 3
       joints: ['torso_joint_b2']
-
-       
