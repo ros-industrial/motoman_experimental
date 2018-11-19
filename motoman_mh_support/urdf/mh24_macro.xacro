@@ -1,0 +1,181 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="motoman_mh_24" params="prefix">
+    <!-- link list -->
+    <link name="${prefix}base_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/visual/base_link.dae"/>
+        </geometry>
+        <material name="blue">
+          <color rgba="0 0 1 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/collision/base_link.stl"/>
+        </geometry>
+        <material name="blue">
+          <color rgba="0 0 1 1"/>
+        </material>
+      </collision>
+    </link>
+    <link name="${prefix}link_s">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/visual/link_s.dae"/>
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/collision/link_s.stl"/>
+        </geometry>
+        <material name="blue"/>
+      </collision>
+    </link>
+    <link name="${prefix}link_l">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/visual/link_l.dae"/>
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/collision/link_l.stl"/>
+        </geometry>
+        <material name="blue"/>
+      </collision>
+    </link>
+    <link name="${prefix}link_u">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/visual/link_u.dae"/>
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/collision/link_u.stl"/>
+        </geometry>
+        <material name="blue"/>
+      </collision>
+    </link>
+    <link name="${prefix}link_r">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/visual/link_r.dae"/>
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/collision/link_r.stl"/>
+        </geometry>
+        <material name="blue"/>
+      </collision>
+    </link>
+    <link name="${prefix}link_b">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/visual/link_b.dae"/>
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/collision/link_b.stl"/>
+        </geometry>
+        <material name="blue"/>
+      </collision>
+    </link>
+    <link name="${prefix}link_t">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/visual/link_t.dae"/>
+        </geometry>
+        <material name="blue"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://motoman_mh_support/meshes/mh24/collision/link_t.stl"/>
+        </geometry>
+        <material name="blue"/>
+      </collision>
+    </link>
+    <link name="${prefix}tool0"/>
+    <!-- end of link list -->
+    <!-- joint list -->
+    <joint name="${prefix}joint_s" type="revolute">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_s"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-180 / 180.0 * pi}" upper="${180 / 180.0 * pi}" effort="0" velocity="${radians(197)}"/>
+    </joint>
+    <joint name="${prefix}joint_l" type="revolute">
+      <origin xyz="0.150 0 0.505" rpy="0 0 0"/>
+      <parent link="${prefix}link_s"/>
+      <child link="${prefix}link_l"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-105 / 180.0 * pi}" upper="${155 / 180.0 * pi}" effort="0" velocity="${radians(190)}"/>
+    </joint>
+    <joint name="${prefix}joint_u" type="revolute">
+      <origin xyz="0 0 0.760" rpy="0 0 0"/>
+      <parent link="${prefix}link_l"/>
+      <child link="${prefix}link_u"/>
+      <axis xyz="0 -1 0"/>
+      <!-- Limited wrt to datasheet to prevent self-collisions -->
+      <limit lower="${-86 / 180.0 * pi}" upper="${163 / 180.0 * pi}" effort="0" velocity="${radians(210)}"/>
+    </joint>
+    <joint name="${prefix}joint_r" type="revolute">
+      <origin xyz="0 0 0.200" rpy="0 0 0"/>
+      <parent link="${prefix}link_u"/>
+      <child link="${prefix}link_r"/>
+      <axis xyz="-1 0 0"/>
+      <limit lower="${-200 / 180.0 * pi}" upper="${200 / 180.0 * pi}" effort="0" velocity="${radians(410)}"/>
+    </joint>
+    <joint name="${prefix}joint_b" type="revolute">
+      <origin xyz="0.795 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}link_r"/>
+      <child link="${prefix}link_b"/>
+      <axis xyz="0 -1 0"/>
+      <limit lower="${-150 / 180.0 * pi}" upper="${150 / 180.0 * pi}" effort="0" velocity="${radians(410)}"/>
+    </joint>
+    <joint name="${prefix}joint_t" type="revolute">
+      <origin xyz="0.100 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}link_b"/>
+      <child link="${prefix}link_t"/>
+      <axis xyz="-1 0 0"/>
+      <limit lower="${-455 / 180.0 * pi}" upper="${455 / 180.0 * pi}" effort="0" velocity="${radians(620)}"/>
+    </joint>
+    <joint name="${prefix}joint_t-tool0" type="fixed">
+      <origin xyz="0 0 0" rpy="0 ${-0.5 * pi} ${pi}"/>
+      <parent link="${prefix}link_t"/>
+      <child link="${prefix}tool0"/>
+    </joint>
+    <!-- end of joint list -->
+    <!-- ROS base_link to Robot Manufacturer World Coordinates transform -->
+    <link name="${prefix}base"/>
+    <joint name="${prefix}base_link-base" type="fixed">
+      <origin xyz="0 0 0.505" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}base"/>
+    </joint>
+  </xacro:macro>
+</robot>
