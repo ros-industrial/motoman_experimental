@@ -7,7 +7,7 @@
           <color rgba="0.12941 0.14902 0.74902 1" />
     </material>
 
-    <xacro:property name="DEG2RAD" value="0.017453292519943295" />
+    <property name="DEG2RAD" value="0.017453292519943295" />
 
     <!-- link list -->
     <link name="${prefix}base_link">
@@ -176,5 +176,5 @@
         <child link="${prefix}base"/>
     </joint>
 
-    </xacro:macro>
+</xacro:macro>
 </robot>
