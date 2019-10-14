@@ -10,7 +10,7 @@
 
 ## Travis - Continuous Integration
 
-Status: [![Build Status](https://travis-ci.org/ros-industrial/motoman_experimental.svg?branch=kinetic-devel)](https://travis-ci.org/ros-industrial/motoman_experimental)
+Status: [![Build Status](https://travis-ci.com/ros-industrial/motoman_experimental.svg?branch=kinetic-devel)](https://travis-ci.com/ros-industrial/motoman_experimental)
 
 ## ROS Buildfarm
 
