@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
   <name>motoman_experimental</name>
   <version>0.1.0</version>
   <description>Experimental packages for Motoman manipulators within ROS-Industrial.</description>
@@ -13,12 +13,12 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <run_depend>motoman_bmda3_support</run_depend>
-  <run_depend>motoman_mh_support</run_depend>
-  <run_depend>motoman_mpl80_moveit_config</run_depend>
-  <run_depend>motoman_mpl_support</run_depend>
-  <run_depend>motoman_robot_pkg_gen</run_depend>
-  <run_depend>motoman_sia5d_moveit_config</run_depend>
+  <exec_depend>motoman_bmda3_support</exec_depend>
+  <exec_depend>motoman_mh_support</exec_depend>
+  <exec_depend>motoman_mpl80_moveit_config</exec_depend>
+  <exec_depend>motoman_mpl_support</exec_depend>
+  <exec_depend>motoman_robot_pkg_gen</exec_depend>
+  <exec_depend>motoman_sia5d_moveit_config</exec_depend>
 
   <export>
     <architecture_independent/>
