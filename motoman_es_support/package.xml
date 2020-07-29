@@ -12,11 +12,11 @@
     </p>
     <p>
       Joint limits and max joint velocities are based on the information in the
-      <a href="http://www.motoman.co.uk/index.php?eID=tx_nawsecuredl&amp;u=0&amp;file=uploads/tx_catalogrobot/Flyer_Robot_ES165RD_II_ES200RD_II_E_06.2015_14.pdf&amp;t=1494181154&amp;hash=d6a6d0e9d1b0b1f69858d061f0fa2b497b89c26f">
-      Motoman ES165RDII Product Specification document</a>. All URDFs / XACROs are based on the
-      default motion and joint velocity limits, unless noted otherwise (ie:
-      no support for high speed joints, extended / limited motion ranges or
-      other options).
+      <em>YASKAWA MOTOMAN-ES165RD II INSTRUCTIONS (HW1482721)</em>, version
+      <em>170336-1CD, rev 2</em>.
+      All URDFs / XACROs are based on the default motion and joint velocity
+      limits, unless noted otherwise (ie: no support for high speed joints,
+      extended / limited motion ranges or other options).
     </p>
     <p>
       Before using any of the configuration files and / or meshes included
