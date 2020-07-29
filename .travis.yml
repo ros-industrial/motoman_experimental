@@ -1,30 +1,24 @@
-sudo: required
-dist: trusty
 language: generic
+services:
+  - docker
 
-notifications:
-  email:
-    on_success: always
-    on_failure: always
-#    recipients:
-#      - jane@doe
+cache:
+  directories:
+    - $HOME/.ccache
+
+git:
+  quiet: true
 
 env:
-  matrix:
-    - ROS_DISTRO="indigo"   ROS_REPO=ros               UPSTREAM_WORKSPACE=file
-    - ROS_DISTRO="indigo"   ROS_REPO=ros-shadow-fixed  UPSTREAM_WORKSPACE=file
-    - ROS_DISTRO="kinetic"  ROS_REPO=ros               UPSTREAM_WORKSPACE=file
-    - ROS_DISTRO="kinetic"  ROS_REPO=ros-shadow-fixed  UPSTREAM_WORKSPACE=file
   global:
-    - BEFORE_SCRIPT='touch $CATKIN_WORKSPACE/src/ros-industrial/industrial_experimental/IRC_v2/CATKIN_IGNORE'
-
-matrix:
-  allow_failures:
-    - env: ROS_DISTRO="indigo"  ROS_REPO=ros               UPSTREAM_WORKSPACE=file
-    - env: ROS_DISTRO="indigo"  ROS_REPO=ros-shadow-fixed  UPSTREAM_WORKSPACE=file
+    - CCACHE_DIR=$HOME/.ccache
+    - UPSTREAM_WORKSPACE='github:ros-industrial/motoman@kinetic-devel'
+  matrix:
+    - ROS_DISTRO="kinetic" ROS_REPO=main
+    - ROS_DISTRO="melodic" ROS_REPO=main
 
 install:
-  - git clone https://github.com/ros-industrial/industrial_ci.git .ci_config
+  - git clone --quiet --depth=1 -b master https://github.com/ros-industrial/industrial_ci.git .industrial_ci
 
 script:
-  - .ci_config/travis.sh
+  - .industrial_ci/travis.sh
