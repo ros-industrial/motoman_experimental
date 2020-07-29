@@ -120,6 +120,14 @@
       </collision>
     </link>
     <link name="${prefix}tool0"/>
+
+    <!--
+
+      Balancer and rod are disabled as without a mimic joint they will not update
+      their pose properly, leading to MoveIt detecting collisions which cannot
+      happen with the real robot (as the balancer is essentially a passive element
+      and cannot come into collision with anything due to joint limits).
+
     <link name="${prefix}balancer_piston">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -154,6 +162,7 @@
         <material name="yellow"/>
       </collision>
     </link>
+    -->
     <!-- end of link list -->
 
     <!-- joint list -->
@@ -204,6 +213,11 @@
       <parent link="${prefix}link_t"/>
       <child link="${prefix}tool0"/>
     </joint>
+
+    <!--
+
+      See earlier comment about balancer and piston.
+
     <joint name="${prefix}joint_balancer_piston" type="fixed">
       <origin xyz="-0.260 0 0.320" rpy="0 0 0"/>
       <parent link="${prefix}link_s"/>
@@ -214,6 +228,7 @@
       <parent link="${prefix}link_s"/>
       <child link="${prefix}balancer_rod"/>
     </joint>
+    -->
     <!-- end of joint list -->
 
     <!-- ROS base_link to Robot Manufacturer World Coordinates transform -->
