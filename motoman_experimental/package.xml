@@ -17,7 +17,7 @@
   <exec_depend>motoman_mh_support</exec_depend>
   <exec_depend>motoman_mpl80_moveit_config</exec_depend>
   <exec_depend>motoman_mpl_support</exec_depend>
-  <exec_depend>motoman_robot_pkg_gen</exec_depend>
+  <!-- exec_depend>motoman_robot_pkg_gen</exec_depend -->
   <exec_depend>motoman_sia5d_moveit_config</exec_depend>
 
   <export>
