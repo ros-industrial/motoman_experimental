@@ -2,18 +2,19 @@
 <package format="2">
 
   <name>motoman_csda10f_moveit_config</name>
-  <version>0.3.0</version>
+  <version>0.2.0</version>
   <description>
-     An automatically generated package with all the configuration and launch files for using the motoman_csda10f with the MoveIt! Motion Planning Framework
+     Package with all the configuration and launch files for using the motoman_csda10f with the MoveIt! Motion Planning Framework, and ready to work with FS100 controller.
   </description>
   <author email="amrith1007@gmail.com">Amrith Ganesh</author>
   <maintainer email="amrith1007@gmail.com">Amrith Ganesh</maintainer>
+  <maintainer email="daniels.ordonez@gmail.com">Daniel Ordonez</maintainer>
 
   <license>BSD</license>
 
-  <url type="website">http://moveit.ros.org/</url>
-  <url type="bugtracker">https://github.com/ros-planning/moveit/issues</url>
-  <url type="repository">https://github.com/ros-planning/moveit</url>
+  <url type="website">http://wiki.ros.org/motoman_sda10f_moveit_config</url>
+  <url type="bugtracker">https://github.com/ros-industrial/motoman/issues</url>
+  <url type="repository">https://github.com/ros-industrial/motoman</url>
 
   <buildtool_depend>catkin</buildtool_depend>
 
