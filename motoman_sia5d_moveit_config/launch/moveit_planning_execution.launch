@@ -12,6 +12,7 @@
   <!-- the "sim" argument controls whether we connect to a Simulated or Real robot -->
   <!--  - if sim=false, robot_ip and controller arguments are required -->
   <arg name="sim" default="true" />
+  <arg name="headless" default="false" />
   <arg name="robot_ip" unless="$(arg sim)" doc="IP of controller" />
   <arg name="controller" unless="$(arg sim)"
        doc="Series of the controller (dx100, dx200, fs100 or yrc1000)" />
@@ -43,9 +44,11 @@
     <arg name="publish_monitored_planning_scene" value="true" />
   </include>
 
-  <include file="$(find motoman_sia5d_moveit_config)/launch/moveit_rviz.launch">
-    <arg name="config" value="true"/>
-  </include>
+  <group unless="$(arg headless)">
+    <include file="$(find motoman_sia5d_moveit_config)/launch/moveit_rviz.launch">
+      <arg name="config" value="true"/>
+    </include>
+  </group>
 
   <include file="$(find motoman_sia5d_moveit_config)/launch/default_warehouse_db.launch" />
 
