@@ -1,0 +1,30 @@
+<launch>
+  <arg name="req_arg" value="default"/>
+  <arg name="fs100" value="fs100"/>
+  
+  <group ns="load_mhj">
+    <include file="$(find motoman_mhj_support)/launch/load_mhj.launch"/>
+  </group>
+
+  <group ns="test_mhj">
+    <include file="$(find motoman_mhj_support)/launch/test_mhj.launch"/>
+  </group>
+
+  <group ns="robot_interface_streaming_mhj">
+    <group ns="fs100" >
+      <include file="$(find motoman_mhj_support)/launch/robot_interface_streaming_mhj.launch">
+        <arg name="robot_ip"   value="$(arg req_arg)" />
+        <arg name="controller" value="$(arg fs100)"/>
+      </include>
+    </group>
+  </group>
+
+  <group ns="robot_state_visualize_mhj">
+    <group ns="fs100" >
+      <include file="$(find motoman_mhj_support)/launch/robot_state_visualize_mhj.launch">
+        <arg name="robot_ip"   value="$(arg req_arg)" />
+        <arg name="controller" value="$(arg fs100)"/>
+      </include>
+    </group>
+  </group>
+</launch>
