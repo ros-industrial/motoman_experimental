@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<library path="lib/libmotoman_mpx3500_ikfast_plugin">
+  <class base_class_type="kinematics::KinematicsBase" name="motoman_mpx3500_ikfast_plugin/IKFastKinematicsPlugin" type="motoman_mpx3500_ikfast_plugin::IKFastKinematicsPlugin">
+    <description>IKFast plugin for closed-form kinematics of Motoman MPX3500 manipulator</description>
+  </class>
+</library>

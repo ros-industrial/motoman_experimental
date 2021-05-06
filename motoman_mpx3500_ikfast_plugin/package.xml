@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package format="2">
+  <name>motoman_mpx3500_ikfast_plugin</name>
+  <version>0.1.0</version>
+  <description>IKFast plugin for Motoman MPX3500</description>
+  <license>BSD</license>
+  <maintainer email="steven.dale@swri.org">Stevie Dale</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>moveit_core</build_depend>
+  <build_depend>tf2_kdl</build_depend>
+  <build_depend>pluginlib</build_depend>
+  <build_depend>eigen_conversions</build_depend>
+  <build_depend>tf2_eigen</build_depend>
+  <build_depend>liblapack-dev</build_depend>
+  <build_depend>roscpp</build_depend>
+
+  <exec_depend>moveit_core</exec_depend>
+  <exec_depend>pluginlib</exec_depend>
+  <exec_depend>liblapack-dev</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>eigen_conversions</exec_depend>
+
+  <export>
+    <moveit_core plugin="${prefix}/motoman_mpx3500_ikfast_plugin_description.xml"/>
+  </export>
+</package>
