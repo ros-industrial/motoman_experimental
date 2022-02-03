@@ -175,7 +175,7 @@
 
   <link name="${prefix}tool0"/>
   <joint name="${prefix}joint_6_t-tool0" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="${radians(180)} ${radians(-90)} 0"/>
     <parent link="${prefix}link_t"/>
     <child link="${prefix}tool0"/>
   </joint>
