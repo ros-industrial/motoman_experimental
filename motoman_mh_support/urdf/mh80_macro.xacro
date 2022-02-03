@@ -148,7 +148,7 @@
     <limit lower="${radians(-125)}" upper="${radians(125)}" effort="582.52" velocity="230" />
   </joint>
   <joint name="${prefix}joint_6_t" type="revolute">
-    <origin xyz="0.175 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="${prefix}link_b"/>
     <child link="${prefix}link_t"/>
     <axis xyz="-1 0 0" />
@@ -162,6 +162,14 @@
     <origin xyz="0 0 0.540" rpy="0 0 0"/>
     <parent link="${prefix}base_link"/>
     <child link="${prefix}base"/>
+  </joint>
+
+  <!-- ROS-Industrial 'flange' frame: attachment point for EEF models -->
+  <link name="${prefix}flange"/>
+  <joint name="${prefix}joint_6_t-flange" type="fixed">
+    <origin xyz="0.175 0 0" rpy="0 0 0"/>
+    <parent link="${prefix}link_t"/>
+    <child link="${prefix}flange"/>
   </joint>
 
   <link name="${prefix}tool0"/>
