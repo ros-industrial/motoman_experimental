@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_ip" />
+  <arg name="prefix" default=""/>
+
+  <include file="$(find motoman_mpp3h_support)/launch/load_joint_names.launch">
+    <arg name="prefix" value="$(arg prefix)"/>
+  </include>
+
+  <!-- MotoRos controller -->
+  <include file="$(find motoman_driver)/launch/robot_interface_streaming_fs100.launch" >
+    <arg name="robot_ip" value="$(arg robot_ip)" />
+  </include>
+
+</launch>

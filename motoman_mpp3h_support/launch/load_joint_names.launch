@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="prefix" default=""/>
+
+  <rosparam param="controller_joint_names" subst_value="True">
+    - '$(arg prefix)joint_s'
+    - '$(arg prefix)joint_l'
+    - '$(arg prefix)joint_u'
+    - '$(arg prefix)joint_r'
+    - '$(arg prefix)joint_b'
+    - '$(arg prefix)joint_t'
+  </rosparam>
+
+</launch>

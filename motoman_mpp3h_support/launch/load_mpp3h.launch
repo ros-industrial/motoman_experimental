@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="prefix" default=""/>
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find motoman_mpp3h_support)/urdf/mpp3h.xacro' 'prefix:=$(arg prefix)'"/>
+
+</launch>

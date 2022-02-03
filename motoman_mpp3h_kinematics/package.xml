@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>motoman_mpp3h_kinematics</name>
+  <version>0.3.5</version>
+  <description>
+    This package contains a kinematic library for the Motoman MPP3H delta robot.
+    It also contains a state publisher for the floating joints of the robot_description.
+  </description>
+
+  <author     email="jonathan.hechtbauer@ipa.fraunhofer.de">Jonathan Hechtbauer (IPA Fraunhofer)</author>
+  <maintainer email="jonathan.hechtbauer@ipa.fraunhofer.de">Jonathan Hechtbauer (IPA Fraunhofer)</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>boost</depend>
+  <depend>tf</depend>
+
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+
+  <test_depend>rosunit</test_depend>
+
+</package>

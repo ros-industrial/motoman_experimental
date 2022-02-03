@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_ip" />
+  <arg name="prefix" default=""/>
+
+  <include file="$(find motoman_mpp3h_support)/launch/load_mpp3h.launch">
+    <arg name="prefix" value="$(arg prefix)"/>
+  </include>
+
+  <include file="$(find motoman_mpp3h_support)/launch/robot_interface_streaming_mpp3h.launch">
+    <arg name="prefix" value="$(arg prefix)"/>
+    <arg name="robot_ip" value="$(arg robot_ip)" />
+  </include>
+
+  <!-- MPP3H state publisher -->
+  <node name="mpp3h_state_publisher" pkg="motoman_mpp3h_kinematics" type="mpp3h_state_publisher" output="screen">
+    <param name="prefix" value="$(arg prefix)"/>
+  </node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find motoman_mpp3h_support)/rviz/mpp3h.rviz"/>
+
+</launch>
