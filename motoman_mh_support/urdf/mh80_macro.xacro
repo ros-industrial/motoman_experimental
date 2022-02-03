@@ -122,42 +122,42 @@
   <!-- end of link list -->
 
   <!-- joint list -->
-  <joint name="${prefix}joint_s" type="revolute">
+  <joint name="${prefix}joint_1_s" type="revolute">
     <origin xyz="0 0 0.540" rpy="0 0 0"/>
     <parent link="${prefix}base_link"/>
     <child link="${prefix}link_s"/>
     <axis xyz="0 0 1"/>
     <limit lower="-3.14159" upper="3.14159" effort="100" velocity="2.967" />
   </joint>
-  <joint name="${prefix}joint_l" type="revolute">
+  <joint name="${prefix}joint_2_l" type="revolute">
     <origin xyz="0.145 0 0" rpy="0 0 0"/>
     <parent link="${prefix}link_s"/>
     <child link="${prefix}link_l"/>
     <axis xyz="0 1 0" />
     <limit lower="-1.5707" upper="2.3561" effort="100" velocity="2.443" />
   </joint>
-  <joint name="${prefix}joint_u" type="revolute">
+  <joint name="${prefix}joint_3_u" type="revolute">
     <origin xyz="0 0 0.870" rpy="0 0 0"/>
     <parent link="${prefix}link_l"/>
     <child link="${prefix}link_u"/>
     <axis xyz="0 -1 0"/>
     <limit lower="-2.9670" upper="4.3807" effort="100" velocity="2.792" />
   </joint>
-  <joint name="${prefix}joint_r" type="revolute">
+  <joint name="${prefix}joint_4_r" type="revolute">
     <origin xyz="0 0 0.210" rpy="0 0 0"/>
     <parent link="${prefix}link_u"/>
     <child link="${prefix}link_r"/>
     <axis xyz="-1 0 0"/>
     <limit lower="-6.2831" upper="6.2831" effort="100" velocity="4.014" />
   </joint>
-  <joint name="${prefix}joint_b" type="revolute">
+  <joint name="${prefix}joint_5_b" type="revolute">
     <origin xyz="1.025 0 0" rpy="0 0 0"/>
     <parent link="${prefix}link_r"/>
     <child link="${prefix}link_b"/>
     <axis xyz="0 -1 0" />
     <limit lower="-2.1816" upper="2.1816" effort="100" velocity="4.014" />
   </joint>
-  <joint name="${prefix}joint_t" type="revolute">
+  <joint name="${prefix}joint_6_t" type="revolute">
     <origin xyz="0.175 0 0" rpy="0 0 0"/>
     <parent link="${prefix}link_b"/>
     <child link="${prefix}link_t"/>
