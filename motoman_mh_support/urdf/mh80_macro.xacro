@@ -172,10 +172,11 @@
     <child link="${prefix}flange"/>
   </joint>
 
+  <!-- ROS-Industrial 'tool0' frame: all-zeros tool frame -->
   <link name="${prefix}tool0"/>
-  <joint name="${prefix}joint_6_t-tool0" type="fixed">
+  <joint name="${prefix}flange-tool0" type="fixed">
     <origin xyz="0 0 0" rpy="${radians(180)} ${radians(-90)} 0"/>
-    <parent link="${prefix}link_t"/>
+    <parent link="${prefix}flange"/>
     <child link="${prefix}tool0"/>
   </joint>
 </xacro:macro>
