@@ -118,7 +118,6 @@
       <material name="collision_material"/>
     </collision>
   </link>
-  <link name="${prefix}tool0"/>
   <!-- end of link list -->
 
   <!-- joint list -->
@@ -164,11 +163,6 @@
     <axis xyz="-1 0 0" />
     <limit lower="-6.2831" upper="6.2831" effort="100" velocity="6.108" />
   </joint>
-  <joint name="${prefix}joint_t-tool0" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="${prefix}link_t"/>
-    <child link="${prefix}tool0"/> 
-  </joint>
   <!-- end of joint list -->
 
   <!-- ROS base_link to Robot Manufacturer World Coordinates transform -->
@@ -177,6 +171,13 @@
     <origin xyz="0 0 0.540" rpy="0 0 0"/>
     <parent link="${prefix}base_link"/>
     <child link="${prefix}base"/>
+  </joint>
+
+  <link name="${prefix}tool0"/>
+  <joint name="${prefix}joint_6_t-tool0" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="${prefix}link_t"/>
+    <child link="${prefix}tool0"/>
   </joint>
 </xacro:macro>
 </robot>
