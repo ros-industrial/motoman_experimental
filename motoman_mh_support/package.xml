@@ -14,7 +14,7 @@
     <p>
       Joint limits and max joint velocities are based on the information in the
       <a href="https://cdn2.hubspot.net/hubfs/366775/Blog_Robots/MH180-120.pdf?t=1494345552355">
-      Motoman MH180-120 product specification document</a>. and
+      Motoman MH180-120 product specification document</a> and
       <a href="https://cdn2.hubspot.net/hubfs/366775/Robots/MH80II.pdf">
       Motoman MH80 product specification document</a>.
       All URDFs / XACROs are based on the
