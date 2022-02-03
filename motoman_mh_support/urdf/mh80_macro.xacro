@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 <xacro:macro name="motoman_mh80" params="prefix">
+  <xacro:include filename="$(find motoman_resources)/urdf/common_materials.xacro"/>
+
   <!-- link list -->
   <link name="${prefix}base_link">
     <visual>
@@ -8,18 +10,13 @@
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/visual/base_link.stl"/>
       </geometry>
-      <material name="blue">
-        <color rgba="0 0 1 1"/>
-      </material>
+      <xacro:material_yaskawa_blue/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/collision/base_link.stl"/>
       </geometry>
-      <material name="collision_material">
-        <color rgba="1 0 0 1"/>
-      </material>
     </collision>
   </link>
   <link name="${prefix}link_s">
@@ -28,14 +25,13 @@
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/visual/link_s.stl"/>
       </geometry>
-      <material name="blue"/>
+      <xacro:material_yaskawa_blue/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/collision/link_s.stl"/>
       </geometry>
-      <material name="collision_material"/>
     </collision>
   </link>
   <link name="${prefix}link_l">
@@ -44,14 +40,13 @@
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/visual/link_l.stl"/>
       </geometry>
-      <material name="blue"/>
+      <xacro:material_yaskawa_blue/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/collision/link_l.stl"/>
       </geometry>
-      <material name="collision_material"/>
     </collision>
   </link>
   <link name="${prefix}link_u">
@@ -60,14 +55,13 @@
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/visual/link_u.stl"/>
       </geometry>
-      <material name="blue"/>
+      <xacro:material_yaskawa_blue/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/collision/link_u.stl"/>
       </geometry>
-      <material name="collision_material"/>
     </collision>
   </link>
   <link name="${prefix}link_r">
@@ -76,14 +70,13 @@
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/visual/link_r.stl"/>
       </geometry>
-      <material name="blue"/>
+      <xacro:material_yaskawa_blue/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/collision/link_r.stl"/>
       </geometry>
-      <material name="collision_material"/>
     </collision>
   </link>
   <link name="${prefix}link_b">
@@ -92,14 +85,13 @@
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/visual/link_b.stl"/>
       </geometry>
-      <material name="blue"/>
+      <xacro:material_yaskawa_blue/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/collision/link_b.stl"/>
       </geometry>
-      <material name="collision_material"/>
     </collision>
   </link>
   <link name="${prefix}link_t">
@@ -108,14 +100,13 @@
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/visual/link_t.stl"/>
       </geometry>
-      <material name="blue"/>
+      <xacro:material_yaskawa_blue/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://motoman_mh_support/meshes/mh80/collision/link_t.stl"/>
       </geometry>
-      <material name="collision_material"/>
     </collision>
   </link>
   <!-- end of link list -->
